@@ -42,8 +42,8 @@ STATICFILES_DIRS = (
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = '' # şşt uzaklaş bakalım ;-)
+EMAIL_HOST_USER = 'testkolabria@gmail.com'
+EMAIL_HOST_PASSWORD = 'test_kolabria'
 
 EMAIL_PORT = 587
 FROM_EMAIL = EMAIL_HOST_USER

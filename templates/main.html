@@ -14,47 +14,25 @@
     <meta charset="utf-8">
     <title>
     	{% block title %}
-    		Python Programcıları
+    	  Kolabria	
     	{% endblock %}
     </title>
     
 
-	<script type="text/javascript">
-
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-21599522-1']);
-	  _gaq.push(['_setDomainName', 'pythontr.org']);
-	  _gaq.push(['_trackPageview']);
-
-	  (function() {
-		 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
-
-	</script>
-
-    
     <link rel="Shortcut Icon" href="{{ STATIC_URL }}img/favicon.ico"></link>
     
-	<meta name="keywords" content="türkiye, python türkiye, Python, piton, akademi, PythonTR, python tr, phyton e-kitap, piython e-book, Python ders, python dersleri,
-python türkçe, python 3.1, python-tr, python_tr, py5hon, piton, python nedir,
-kitap, Django, Spyder, Django nedir, tkinter, py, *.py, pyton, {{ post.tags }}" />
-    
-    <meta name="robots" content="index, follow" />
+	<meta name="keywords" content="" />
+  <meta name="robots" content="index, follow" />
 	<meta name="Revisit-after" content="1 days" />
-	<meta name="DISTRIBUTION" content="GLOBAL" />
 	<meta name="expires" content="never" />
 	<meta name="rating" content="general" />
     
-    <meta name="author" content="pythontr" />
-	<meta name="description" content="Python Programlama Dili" />
-	<meta name="google-site-verification" content="euJj8OwKcNB1hAMqaI1EZXDkEjbN9aYaKXLroa9hBDE" />
+	<meta name="description" content="Kolabria WikiWall Appliance for Real-time Collaboration" />
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Le styles -->
-    <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
-    <link href="{{ STATIC_URL }}prettify.css" rel="stylesheet">
+  <!-- Le styles -->
+  <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
+  <link href="{{ STATIC_URL }}prettify.css" rel="stylesheet">
 
     <style type="text/css">
       body {
@@ -96,78 +74,16 @@ kitap, Django, Spyder, Django nedir, tkinter, py, *.py, pyton, {{ post.tags }}" 
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="{% url 'posts:index' %}"><img style="margin: 1px; float: left;" src="http://media.pythontr.org/static/images/python_60x73.png" alt="python_60x73"border="0" width="20";>Python Programcıları</a>
+          <a class="brand" href="{% url 'posts:index' %}">Kolabria</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="dropdown">
+              <li>
               	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              		Gönderiler
+              	   About
               		<b class="caret"></b>
               	</a>
-              	
-              	<ul class="dropdown-menu">
-              		<li>
-              			<a href="{% url 'posts:index' %}">
-              				<i class="icon-home"></i>
-              				Anasayfa
-              			</a>
-              		</li>
-              		<li>
-              			<a href="{% url 'posts:categories' %}">
-              				<i class="icon-th"></i>
-              				Kategoriler
-              			</a>
-              		</li>
-              		{% if perms.posts.add_post %}
-              			<li class="divider"></li>
-              			<li>
-              				<a href="{% url 'posts:new' %}">
-              					<i class="icon-plus"></i>
-              					Yeni
-              				</a>
-              			</li>
-              			<li>
-              				<a href="{% url 'posts:my_posts' %}">
-              					<i class="icon-list-alt"></i>
-              					Gönderilerim
-              				</a>
-              			</li>
-              		{% endif %}
-              	</ul>
               </li>
-              <li>
-              	<a href="/polls/">Anketler</a>
-              </li>
-              <li>
-              	<a href="{% url 'links:index' %}">Bağlantılar</a>
-              </li>
-              <li>
-              	<a href="http://forum.pythontr.org">Soru/Cevap</a>
-              </li>
-              <li class="dropdown">
-              	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              		Kişiler
-              		<b class="caret"></b>
-              	</a>
-              	<ul class="dropdown-menu">
-              		<li>
-              			<a href="{% url 'users:people' %}">
-              				<i class=" icon-user"></i> Üyeler
-              			</a>
-              		</li>
-              		<li>
-              			<a href="{% url 'users:authors' %}">
-              				<i class="icon-pencil"></i> Yazarlar
-              			</a>
-              		</li>
-              	</ul>
-              </li>
-              <li class="dropdown">
-              	<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              		Sayfalar
-              		<b class="caret"></b>
-              	</a>
-              	
+
               	<ul class="dropdown-menu">
               		{% for flatpage in flatpages %}
               			<li>
@@ -178,14 +94,10 @@ kitap, Django, Spyder, Django nedir, tkinter, py, *.py, pyton, {{ post.tags }}" 
               		{% endfor %}
               	</ul>
               </li>
-              <li><a href="{% url 'contact' %}">İletişim</a></li>
+              <li><a href="{% url 'contact' %}">Contact</a></li>
             </ul>
             
-			<form class="navbar-search pull-left" method="get" action="{% url 'posts:search' %}">
-        		<input type="text" value="{{ q }}" name="q" class="search-query" placeholder="Ara...">
-        	</form>
-            
-            {% if user.is_authenticated %}
+           {% if user.is_authenticated %}
 				<div class="btn-group pull-right">
 					<a class="btn btn-success" href="{% url 'users:show_profile' user.username %}">{{ user.username }}</a>
 					<a class="btn btn-success dropdown-toggle" href="#" data-toggle="dropdown">
@@ -194,44 +106,44 @@ kitap, Django, Spyder, Django nedir, tkinter, py, *.py, pyton, {{ post.tags }}" 
 					<ul class="dropdown-menu">
 						<li>
 							<a href="{% url 'users:show_profile' user.username %}">
-								<i class="icon-user"></i> Profilim
+								<i class="icon-user"></i> Profile
 							</a>
 						</li>
 						<li>
 							<a href="{% url 'users:settings' %}">
-								<i class="icon-cog"></i> Ayarlar
+								<i class="icon-cog"></i> Settings 
 							</a>
 						</li>
 												
 						<li class="divider"></li>
 						<li>
 							<a href="{% url 'users:logout' %}">
-								<i class="icon-off"></i> Çıkış
+								<i class="icon-off"></i> logout
 							</a>
 						</li>
 					</ul>
         		</div>
             {% else %}
 				<div class="btn-group pull-right">
-					<a class="btn btn-danger" href="#">Ziyaretçi</a>
+					<a class="btn btn-danger" href="#">Warning</a>
 					<a class="btn btn-danger dropdown-toggle" href="#" data-toggle="dropdown">
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
 						<li>
 							<a href="{% url 'users:login' %}">
-								<i class="icon-ok"></i> Giriş
+								<i class="icon-ok"></i> loginok
 							</a>
 						</li>
 						<li>
 							<a href="{% url 'users:signup' %}">
-								<i class="icon-user"></i> Kayıt ol
+								<i class="icon-user"></i> signup
 							</a>
 						</li>
 						<li class="divider"></li>
 						<li>
 							<a href="/accounts/password_reset/">
-								<i class="icon-lock"></i> Parolamı unuttum
+								<i class="icon-lock"></i> password_reset
 							</a>
 						</li>
 					</ul>
@@ -258,7 +170,7 @@ kitap, Django, Spyder, Django nedir, tkinter, py, *.py, pyton, {{ post.tags }}" 
             	{% else %}
             	    {% if user.is_authenticated %}
 	            		<li>
-	            			<a href="{% url 'became_an_author' %}">Yazar olmak için başvur</a>
+	            			<a href="{% url 'became_an_author' %}">became author</a>
 	            		</li>
             		{% endif %}
             	{% endif %}
@@ -266,46 +178,46 @@ kitap, Django, Spyder, Django nedir, tkinter, py, *.py, pyton, {{ post.tags }}" 
             	{% if user.is_authenticated %}
             		<li class="nav-header">Bağlantı yönetimi</li>
             		<li>
-            			<a href="{% url 'links:new' %}">Yeni bağlantı ekle</a>
+            			<a href="{% url 'links:new' %}">newlinks</a>
             		</li>
-            		<li class="nav-header">Kullanıcı işlemleri</li>
+            		<li class="nav-header">nav-header</li>
             		<li>
             			<a href="{% url 'users:password_change' %}">
-            				Parola değiştirme
+            				Change Password
             			</a>
             		</li>
             		<li>
             			<a href="{% url 'users:settings' %}">
-            				Hesabımı sil
+            				settings
             			</a>
             		</li>
             		<li class="nav-header">Bilgiler</li>
             		<li>
-            			<a href="{% url 'users:show_profile' user %}">Profilim</a>
+            			<a href="{% url 'users:show_profile' user %}">Profile</a>
             		</li>
             		<li>
             			<a href="{% url 'users:update_informations' %}">
-            				Kişisel bilgilerimi düzenle
+            				update_user_info
             			</a>
             		</li>
             		<li>
             			<a href="{% url 'users:update_profile' %}">
-            				Profilimi düzenle
+            				update_profile
             			</a>
             		</li>
             		<li class="nav-header">Diğer</li>
             		<li>
             			<a href="{% url 'users:invite_friends' %}">
-            				Arkadaşlarımı davet et
+            				invite_friends
             			</a>
             		</li>
             	{% endif %}
             
-              <li class="nav-header">Son gönderilenler</li>
+              <li class="nav-header">Latest Posts</li>
               	{% get_five_latest_posts %}
-              <li class="nav-header">En çok okunanlar</li>
+              <li class="nav-header">Most Read</li>
               	{% get_five_most_reads %}
-			  <li class="nav-header">Kategoriler</li>
+			  <li class="nav-header">Categories</li>
               	{% get_categories %}
               	
             </ul>
@@ -322,26 +234,7 @@ kitap, Django, Spyder, Django nedir, tkinter, py, *.py, pyton, {{ post.tags }}" 
       <footer>
       	<center>
       		<p>      			
-      			<a href="/rss/">
-      				<img width="32" height="32" src="{{ STATIC_URL }}img/rss.png" alt="" />      				
-      			</a>
-			<a href='http://tuxhub.net'>
-				<img src='http://bilalkaraer.com/wp-content/plugins/iletisimformu//images/tuxhub.png' alt='' />
-			</a>
-      			<a href="https://twitter.com/#!/pythontr">
-      				<img width="32" height="32" src="{{ STATIC_URL }}img/twitter.png" alt="" />
-      			</a>
-      			<a href="http://www.facebook.com/groups/244980241949/">
-      				<img width="32" height="32" src="{{ STATIC_URL }}img/facebook.png" alt="" />
-      			</a>
-      			<a href="https://github.com/electrocoder/pythontr_org">
-      				<img width="32" height="32" src="{{ STATIC_URL }}img/github_white_black_cat_32.png" alt="" />
-      			</a>
-      		</p>
-        	<p>
-        		<a href="http://www.djangoproject.com/"><img src="http://media.djangoproject.com/img/badges/djangoproject120x25.gif" border="0" alt="A Django project." title="A Django project." /></a>
-        		<br />
-        		Bazı hakları saklıdır. &copy; 2012 Python Programcıları
+        		&copy; 2012 RadioBeam Networks - All Rights Reserved
         	</p>
        </center>
       </footer>

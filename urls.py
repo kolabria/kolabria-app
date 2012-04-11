@@ -21,10 +21,10 @@ urlpatterns += RSS_URLS
 
 urlpatterns += patterns('',
     url(r'^links/', include('kolabria.links.urls', namespace='links')),
-    url(r'^polls/', include('kolabria.polls.urls', namespace='polls')),
+    #    url(r'^polls/', include('kolabria.polls.urls', namespace='polls')),
     url(r'^accounts/', include('kolabria.users.urls', namespace='users')),
 
-    url(r'^admin/', include(admin.site.urls)),
+#    url(r'^admin/', include(admin.site.urls)),
 
     url(r'^', include('kolabria.main.urls')),
     url(r'^', include('kolabria.posts.urls', namespace='posts')),
