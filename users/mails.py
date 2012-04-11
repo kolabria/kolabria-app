@@ -3,7 +3,7 @@
 from django.core.mail import send_mail, send_mass_mail
 from django.template import Context, loader
 
-from pythontr_org.settings import ADMINS, FROM_EMAIL
+from kolabria.settings import ADMINS, FROM_EMAIL
 from django.contrib.sites.models import Site
 
 TO = [ email for name, email in ADMINS ]
@@ -28,7 +28,7 @@ def decline_author_requests_mail(user):
     
     
 def invite_friend_mail(user, formset):
-    subject  = u'pythontr.org bilginin paylaşıldığı yer'
+    subject  = u'bilginin paylaşıldığı yer'
     messages = []
     
     for form in formset:

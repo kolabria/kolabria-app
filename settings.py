@@ -1,11 +1,26 @@
 # -*- coding: utf-8 -*-
 
-# Django settings for pythontr project.
+# Django settings 
 
 import os.path
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
+DEBUG_TOOLBAR_CONFIG = {
+    'INTERCEPT_REDIRECTS': False,
+}
+
+DEBUG_TOOLBAR_PANELS = (
+    'debug_toolbar.panels.version.VersionDebugPanel',
+    'debug_toolbar.panels.timer.TimerDebugPanel',
+    'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
+    'debug_toolbar.panels.headers.HeaderDebugPanel',
+    'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
+    'debug_toolbar.panels.template.TemplateDebugPanel',
+    'debug_toolbar.panels.signals.SignalDebugPanel',
+    'debug_toolbar.panels.logger.LoggingPanel',
+)
 
 PATH = os.path.dirname(__file__)
 
@@ -40,8 +55,8 @@ ADMINS = (
 )
 
 
-# Üye işlemleri ile ilgili ayarlar;
 
+INTERNAL_IPS = ('127.0.0.1',)
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/accounts/login/'
 
@@ -91,9 +106,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
-ROOT_URLCONF = 'pythontr_org.urls'
+ROOT_URLCONF = 'kolabria.urls'
 
 TEMPLATE_DIRS = (
                  PATH + '/templates',
@@ -105,8 +121,8 @@ FIXTURE_DIRS = (
                 PATH + '/fixtures',
 )
 
-DISQUS_API_KEY = 'rr3r45gg7hoAnpar32erwr32432rerSLlxoos2JpnY' 
-DISQUS_WEBSITE_SHORTNAME = 'pythonprogramcilari'
+#DISQUS_API_KEY = 'rr3r45gg7hoAnpar32erwr32432rerSLlxoos2JpnY' 
+#DISQUS_WEBSITE_SHORTNAME = 'pythonprogramcilari'
 
 
 TINYMCE_DEFAULT_CONFIG = {
@@ -127,15 +143,14 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.localflavor',
     'django.contrib.markup',
-    
-    'pythontr_org.polls',
-    
-    'pythontr_org.posts',
-    'pythontr_org.links',
-    'pythontr_org.users',
-    'pythontr_org.main',    
-    
-    'disqus',
+
+    'kolabria.polls',
+    'kolabria.posts',
+    'kolabria.links',
+    'kolabria.users',
+    'kolabria.main',
+    'debug_toolbar',
+#    'disqus',
     'south',
 )
 

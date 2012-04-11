@@ -5,9 +5,9 @@ from django.conf.urls.defaults import patterns, url
 
 from django.shortcuts import get_object_or_404
 
-from pythontr_org.posts.models import Post, Category
-from pythontr_org.links.models import Link
-from pythontr_org.polls.models import Poll
+from kolabria.posts.models import Post, Category
+from kolabria.links.models import Link
+from kolabria.polls.models import Poll
 
 
 class LatestCommunityPosts(Feed):

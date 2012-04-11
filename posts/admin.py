@@ -3,7 +3,7 @@
 from django.contrib import admin
 from django import forms
 
-from pythontr_org.posts.models import Post, Category
+from kolabria.posts.models import Post, Category
 
 
 class CategoryAdmin(admin.ModelAdmin):

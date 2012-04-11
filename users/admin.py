@@ -5,8 +5,8 @@ from django.contrib.auth.admin import UserAdmin
 
 from django.contrib.auth.models import User, Group
 
-from pythontr_org.users.models import Profile
-from pythontr_org.users.mails import decline_author_requests_mail, accept_author_requests_mail
+from kolabria.users.models import Profile
+from kolabria.users.mails import decline_author_requests_mail, accept_author_requests_mail
 
 
 class ProfileAdmin(admin.ModelAdmin):

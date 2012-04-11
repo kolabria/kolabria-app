@@ -2,7 +2,7 @@
 
 from django import template
 
-from pythontr_org.posts.models import Post, Category
+from kolabria.posts.models import Post, Category
 
 register = template.Library()
 

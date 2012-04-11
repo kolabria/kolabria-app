@@ -2,9 +2,9 @@
 
 from django.forms import ModelForm
 
-from pythontr_org.posts.models import Post, Category
+from kolabria.posts.models import Post, Category
 
-from tinymce.widgets import TinyMCE
+#from tinymce.widgets import TinyMCE
 
 class PostForm(ModelForm):
     

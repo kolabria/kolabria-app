@@ -4,7 +4,7 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 
 from django.core.urlresolvers import reverse
-from pythontr_org.polls.models import Poll, Vote, Choice
+from kolabria.polls.models import Poll, Vote, Choice
 
 
 fixtures = ['groups.json', 'users.json', 'polls.json']

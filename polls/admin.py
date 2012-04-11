@@ -1,6 +1,6 @@
 # -*- coding: utf-8-*-
 
-from pythontr_org.polls.models import Poll, Choice, Vote
+from kolabria.polls.models import Poll, Choice, Vote
 from django.contrib import admin
 
 

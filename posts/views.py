@@ -6,10 +6,10 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib import messages
 from django.views.generic import ListView, CreateView
 
-from pythontr_org.posts.models import Post, Category
-from pythontr_org.posts.forms import PostForm
+from kolabria.posts.models import Post, Category
+from kolabria.posts.forms import PostForm
 
-from pythontr_org.utils import ProtectedView
+from kolabria.utils import ProtectedView
 
 
 class PostListView(ListView):

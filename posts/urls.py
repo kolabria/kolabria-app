@@ -2,10 +2,10 @@
 
 from django.conf.urls.defaults import patterns, include, url
 
-from pythontr_org.posts.views import PostListView, PostSearchListView,\
+from kolabria.posts.views import PostListView, PostSearchListView,\
 CategoryPostListView, MyPostListView, CategoryListView, NewPostView
 
-urlpatterns = patterns('pythontr_org.posts.views',
+urlpatterns = patterns('kolabria.posts.views',
                        
                        url(r'^$', PostListView.as_view(), name='index'),                       
                        url(r'^posts/new/$', 'new', name='new'),

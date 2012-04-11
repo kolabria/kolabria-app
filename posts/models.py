@@ -7,7 +7,7 @@ from django.contrib.sitemaps import ping_google
 from django.core.exceptions import ValidationError
 from django.utils.safestring import mark_safe
 
-from pythontr_org.utils import slugify_unicode
+from kolabria.utils import slugify_unicode
 
 
 GOOGLE_CODE_PRETTIFY = (u'''
@@ -26,7 +26,7 @@ class Category(models.Model):
     name = models.CharField("Adı", unique=True, max_length=50)
     slug = models.SlugField('Slug', max_length = 255, blank = True, null = True)
     
-    image = models.ImageField(upload_to='category_images')
+#    image = models.ImageField(upload_to='category_images')
     
     def __unicode__(self):
         return self.name

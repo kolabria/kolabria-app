@@ -2,7 +2,7 @@
 
 from django.forms import ModelForm
 
-from pythontr_org.links.models import Link
+from kolabria.links.models import Link
 
 
 class LinkForm(ModelForm):

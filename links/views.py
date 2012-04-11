@@ -10,11 +10,11 @@ from django.utils.decorators import method_decorator
 from django.views.generic import ListView
 from django.views.generic import CreateView
 
-from pythontr_org.links.models import Link
-from pythontr_org.links.forms import LinkForm
-from pythontr_org.links.mails import LinkAddedMail
+from kolabria.links.models import Link
+from kolabria.links.forms import LinkForm
+from kolabria.links.mails import LinkAddedMail
 
-from pythontr_org.utils import ProtectedView
+from kolabria.utils import ProtectedView
 
 class LinkListView(ListView):
     template_name        = 'links/index.html'

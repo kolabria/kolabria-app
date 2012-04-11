@@ -4,7 +4,7 @@ from django import forms
 from django.forms import ModelForm
 
 from django.contrib.auth.models import User
-from pythontr_org.users.models import Profile
+from kolabria.users.models import Profile
 
 
 class UserSettings(ModelForm):    

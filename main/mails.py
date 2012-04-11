@@ -5,7 +5,7 @@ from django.contrib.sites.models import Site
 from django.core.mail import send_mail
 from django.template import Context, loader
 
-from pythontr_org.settings import ADMINS, FROM_EMAIL
+from kolabria.settings import ADMINS, FROM_EMAIL
 
 TO = [ email for name, email in ADMINS ]
 

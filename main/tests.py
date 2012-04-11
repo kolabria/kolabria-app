@@ -5,7 +5,7 @@ from django.test import TestCase
 from django.core import mail
 from django.core.urlresolvers import reverse
 
-from pythontr_org.settings import ADMINS
+from kolabria.settings import ADMINS
 from django.contrib.auth.models import User, Group
 
 

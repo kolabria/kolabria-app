@@ -4,9 +4,9 @@ from django.test import TestCase
 from django.core.urlresolvers import reverse
 
 from django.core import mail
-from pythontr_org.links.models import Link
+from kolabria.links.models import Link
 
-from pythontr_org.settings import ADMINS
+from kolabria.settings import ADMINS
 
 
 DATA = {

@@ -6,8 +6,8 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-from pythontr_org.main.forms import ContactForm, AuthorForm
-from pythontr_org.main.mails import ContactMail, AuthorMail
+from kolabria.main.forms import ContactForm, AuthorForm
+from kolabria.main.mails import ContactMail, AuthorMail
 
 
 def contact(request): 

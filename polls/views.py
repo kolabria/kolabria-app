@@ -3,7 +3,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 
-from pythontr_org.polls.models import Choice, Poll, Vote
+from kolabria.polls.models import Choice, Poll, Vote
 
 from django.core.exceptions import ValidationError
 from django.views.generic import ListView, DetailView
