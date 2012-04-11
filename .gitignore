@@ -6,3 +6,4 @@ database
 .project
 .pydevproject
 media
+venv/
