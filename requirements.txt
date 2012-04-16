@@ -1,0 +1,4 @@
+django>=1.4
+south
+django-debug-toolbar
+django-guardian
