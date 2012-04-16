@@ -5,7 +5,7 @@ TEMPLATE_DEBUG = False
 
 INSTALLED_APPS += ('sentry,')
 
-DATABASES['default']['NAME'] = 'kolabria_production'
+DATABASES['default']['NAME'] = 'kolabria_production.db'
 
 SENTRY_LOG_DIR = os.path.join(PROJECT_DIR, 'logs')
 SENTRY_RUN_DIR= os.path.join(PROJECT_DIR, 'run')
