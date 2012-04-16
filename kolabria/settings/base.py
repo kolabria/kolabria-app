@@ -142,6 +142,7 @@ INSTALLED_APPS = (
 
     'south',
     'debug_toolbar',
+    'guardian',
 #    'django_coverage',
 #    'celery',
 #    'sorl.thumbnail',
@@ -150,7 +151,8 @@ INSTALLED_APPS = (
 
     # main app
     'kolabria.apps.site',
-    'guardian',
+    'kolabria.apps.account',
+
 #    'crispy_forms',
 #    'pagination',
 )
