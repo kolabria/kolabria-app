@@ -142,17 +142,17 @@ INSTALLED_APPS = (
 
     'south',
     'debug_toolbar',
-    'django_coverage',
-    'celery',
-    'sorl.thumbnail',
+#    'django_coverage',
+#    'celery',
+#    'sorl.thumbnail',
 
     # my apps
 
     # main app
     'kolabria.apps.site',
     'guardian',
-    'crispy_forms',
-    'pagination',
+#    'crispy_forms',
+#    'pagination',
 )
 
 # A sample logging configuration. The only tangible logging
