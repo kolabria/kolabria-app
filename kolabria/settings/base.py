@@ -11,6 +11,11 @@ TEMPLATE_DEBUG = DEBUG
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
+ANONYMOUS_USER_ID = -1
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'guardian.backends.ObjectPermissionBackend',
+)
 
 MANAGERS = ADMINS
 
@@ -145,7 +150,7 @@ INSTALLED_APPS = (
 
     # main app
     'kolabria.apps.site',
-    
+    'guardian',
     'crispy_forms',
     'pagination',
 )
