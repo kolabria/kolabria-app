@@ -1,4 +1,5 @@
 *.pyc
+venv/
 
 kolabria_development
 kolabria_dev.db
