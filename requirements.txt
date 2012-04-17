@@ -3,5 +3,7 @@ south
 django-debug-toolbar
 django-guardian
 
+django-phonenumber-field
+
 ipdb
 ipython
