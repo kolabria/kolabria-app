@@ -3,26 +3,19 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.template.context import RequestContext
 from django.contrib import messages
-
+from django.contrib.formtools.wizard.views import SessionWizardView
 from django.views.generic.base import TemplateView
 
-from kolabria.apps.account.models import AccountForm
+from kolabria.apps.account.models import AccountForm, UserProfileForm, UserForm
 
 class HomePage(TemplateView):
     template_name = "public/home.html"
 
-def create_account(request):
-    form = AccountForm(request.POST or None)
-    if form.is_valid():
-        # create the company account instance
-        form.save()
-        messages.success(request, form)
-        return HttpResponseRedirect('/%s/signup' % form.slug )
 
-    data = {'title': 'Kolabria - Create a new Account ', 'form': form,
-             }
-    return render_to_response("public/create.html", data,
-                              context_instance=RequestContext(request))
+class CreateAccount(SessionWizardView):
+    def done(self, form_list, **kwargs):
+        # do something
+        return HttpResponseRedirect('/welcome/')
 
 
 def signup(request, company):
