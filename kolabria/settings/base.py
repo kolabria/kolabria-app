@@ -8,6 +8,7 @@ PROJECT_DIR = os.path.dirname(BASE_DIR)
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+ACCOUNT_ACTIVATION_DAYS = 7  # Activation window 1-week
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )

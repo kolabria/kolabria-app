@@ -3,10 +3,11 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.template.context import RequestContext
 from django.contrib import messages
+
 from django.contrib.formtools.wizard.views import SessionWizardView
 from django.views.generic.base import TemplateView
 
-from kolabria.apps.account.models import AccountForm, UserProfileForm, UserForm
+import ipdb
 
 class HomePage(TemplateView):
     template_name = "public/home.html"
@@ -14,8 +15,21 @@ class HomePage(TemplateView):
 
 class CreateAccount(SessionWizardView):
     def done(self, form_list, **kwargs):
-        # do something
-        return HttpResponseRedirect('/welcome/')
+        account_data = form_list[0]
+        profile_data = form_list[1]
+        user_data = form_list[2]
+
+        owner = user_data.save()
+        account_data.instance.owner = owner
+        new_account = account_data.save()
+
+        profile_data.instance.user = owner
+        profile_data.instance.account = new_account
+        profile = profile_data.save()
+        
+        ipdb.set_trace()
+        return HttpResponseRedirect('http://%s.kolabria.com:8000' %
+                                                          new_account.slug)
 
 
 def signup(request, company):
@@ -23,18 +37,3 @@ def signup(request, company):
            }
     return render_to_response("public/signup.html", data,
                               context_instance=RequestContext(request))
-"""
-# also attach the contact information to the anonymous request.user
-        username = request.POST['username']
-        email = request.POST['email']
-        password = request.POST['password2']
-        new_user = User.create_user(username=username, email=email,
-                                    password=password)
-        new_user.first_name = request.POST['first_name']
-        new_user.last_name = request.POST['last_name']
-        new_user.save()
-        auth_user = authenticate(username=username, password=password)
-        login(request=request, user=auth_user)
-        messages.success(request, 'Successfully logged in as %s' % \
-                                                           auth_user.username)
-"""
