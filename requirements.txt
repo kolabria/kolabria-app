@@ -4,6 +4,7 @@ django-debug-toolbar
 django-guardian
 django-phonenumber-field
 django-email-usernames
+#django-registration
 
 ipdb
 ipython
