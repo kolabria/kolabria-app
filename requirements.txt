@@ -2,8 +2,8 @@ django>=1.4
 south
 django-debug-toolbar
 django-guardian
-
 django-phonenumber-field
+django-email-usernames
 
 ipdb
 ipython

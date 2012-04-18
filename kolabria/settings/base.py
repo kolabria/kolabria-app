@@ -13,6 +13,7 @@ ADMINS = (
 )
 ANONYMOUS_USER_ID = -1
 AUTHENTICATION_BACKENDS = (
+    'email_usernames.backends.EmailOrUsernameModelBackend',
     'django.contrib.auth.backends.ModelBackend',
     'guardian.backends.ObjectPermissionBackend',
 )
@@ -130,9 +131,6 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-
-    # django
-
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -144,6 +142,7 @@ INSTALLED_APPS = (
     'south',
     'debug_toolbar',
     'guardian',
+    'email_usernames',
 #    'django_coverage',
 #    'celery',
 #    'sorl.thumbnail',
