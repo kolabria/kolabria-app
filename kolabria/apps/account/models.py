@@ -13,10 +13,10 @@ class Account(models.Model):
         (u'Inactive', u'Inactive'),
     )
 
-    name = models.CharField(max_length=30)
-    slug = models.SlugField(max_length=20)
-    box_count = models.IntegerField()
-    owner = models.ForeignKey(User, editable=False)
+    name = models.CharField("Company Name", max_length=30)
+    slug = models.SlugField("Company Subdomain", max_length=30)
+    box_count = models.IntegerField("Number of Appliances")
+    owner = models.ForeignKey(User, default=User.objects.get(id=1), editable=False)
     status = models.CharField(default='Active', 
                               max_length=8, 
                               choices=STATUS_CHOICES,
@@ -44,10 +44,11 @@ class UserProfile(models.Model):
         (u'CAD', u'CAD'),
     )
 
-    user = models.OneToOneField(User)
-    account = models.ForeignKey(Account)
+    user = models.OneToOneField(User, editable=False)
+    account = models.ForeignKey(Account, editable=False)
     currency = models.CharField(max_length=3,
-                                choices=CURRENCY)
+                                choices=CURRENCY,
+                                editable=False)
     phone = models.CharField(max_length=16)
     address1 = models.CharField(max_length=30)
     address2 = models.CharField(max_length=30, blank=True)
@@ -55,7 +56,7 @@ class UserProfile(models.Model):
     state = models.CharField(max_length=30)
     postal_zip = models.CharField(max_length=7)
     country = models.CharField(max_length=30)
-    agree_terms = models.BooleanField(default=False)
+    agree_terms = models.BooleanField("Agree to Terms of Service", default=False)
 
 
 class UserProfileForm(ModelForm):
