@@ -31,6 +31,13 @@ DATABASES = {
     }
 }
 
+# Email Configuration for password recovery, etc.
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = "587"
+EMAIL_HOST_USER = 'kolabria.test@gmail.com'
+EMAIL_HOST_PASSWORD = 'kolabria1234test'
+EMAIL_USE_TLS = True
+
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
@@ -138,7 +145,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
-
+    'registration',
     'south',
     'debug_toolbar',
     'guardian',
