@@ -143,7 +143,7 @@ INSTALLED_APPS = (
 
     'debug_toolbar',
 #    'disqus',
-#    'south',
+    'south',
 )
 
 LOGGING = {
