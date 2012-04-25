@@ -5,131 +5,48 @@
 
 {% block content %}
 	<div class="page-header">
-		<h1>Merhaba</h1>
+		<h1>Kolabria - User Profile</h1>
 	</div>
 	
 	<div class="span8">
-    	<center>
-		    <a href="{{ tuser.get_profile.get_image }}">
-		    	<img src="{{ tuser.get_profile.get_image }}" alt="">
-		    </a>
-	    </center>
-		
+	
 		<table class="table table-bordered">
 			<tr>
-				<th>Kullanıcı adım</th>
+				<th>Username:</th>
 				<td>{{ tuser.username }}</td>
 			</tr>
 			<tr>
-				<th>Adım</th>
+				<th>First Name:</th>
 				<td>{{ tuser.first_name }}</td>
 			</tr>
 			<tr>
-				<th>Soyadım</th>
+				<th>Last Name:</th>
 				<td>{{ tuser.last_name }}</td>
 			</tr>
 			<tr>
-				<th>Email adresim</th>
+				<th>Email address:</th>
 				<td><a href="mailto:{{ tuser.email }}">{{ tuser.email }}</a></td>
-			</tr>
+      </tr>
 			<tr>
-				<th>Kayıt tarihim</th>
-				<td>{{ tuser.date_joined.date }}</td>
-			</tr>
-			<tr>
-				<th>Web adresim</th>
+				<th>Location:</th>
 				<td>
-					<a href="{{ profile.web_site }}" target="_blank">
-						{{ profile.web_site }}
-					</a>
+					{{ profile.get_city_display }}
 				</td>
 			</tr>
 			<tr>
+				<th>Date Joined</th>
+				<td>{{ tuser.date_joined.date }}</td>
+			</tr>
+		<tr>
 				<th>
-					Hakkımda
+					About:
 				</th>
 				<td>
 					{{ profile.about|textile }}
 				</td>
 			</tr>
-			<tr>
-				<th>Şehrim</th>
-				<td>
-					{{ profile.get_city_display }}
-				</td>
-			</tr>
-			
-			{% comment %}			
-				Profil bağlantılarını göster.
-				Böyle göstermek çok çirkin. Daha temiz bir yol bulmalısın!				
-			{% endcomment %}
-			
-			{% if profile.django_people_profile %}
-				<tr>
-					<th>
-						Django people profilim
-					</th>
-					<td>
-						<a href="{{ profile.django_people_profile }}" target="_blank">
-							{{ profile.django_people_profile }}
-						</a>
-					</td>
-				</tr>
-			{% endif %}
-			
-			{% if profile.django_snippets_profile %}
-				<tr>
-					<th>
-						Django snippets profilim
-					</th>
-					<td>
-						<a href="{{ profile.django_snippets_profile }}" target="_blank">
-							{{ profile.django_snippets_profile }}
-						</a>
-					</td>
-				</tr>
-			{% endif %}
-			
-			{% if profile.tuxhub_profile %}
-				<tr>
-					<th>
-						Tuxhub profilim
-					</th>
-					<td>
-						<a href="{{ profile.tuxhub_profile }}" target="_blank">
-							{{ profile.tuxhub_profile }}
-						</a>
-					</td>
-				</tr>
-			{% endif %}
-			
-			{% if profile.twitter_profile %}
-				<tr>
-					<th>
-						Twitter profilim
-					</th>
-					<td>
-						<a href="{{ profile.twitter_profile }}" target="_blank">
-							{{ profile.twitter_profile }}
-						</a>
-					</td>
-				</tr>
-			{% endif %}			
-			
-			{% if profile.github_profile %}
-				<tr>
-					<th>
-						Github profilim
-					</th>
-					<td>
-						<a href="{{ profile.github_profile }}" target="_blank">
-							{{ profile.github_profile }}
-						</a>
-					</td>
-				</tr>
-			{% endif %}									
-			
-			
+		
+		
 			{% if post_list %}
 				<tr>
 					<th>Gönderilerim</th>

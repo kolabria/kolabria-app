@@ -1,14 +1,13 @@
 {% extends 'main.html' %}
 
-{% block title %} Ayarlar {% endblock %}
+{% block title %} Kolabria - User Settings{% endblock %}
 
 {% block content %}
 	<div class="page-header">
-		<h1>Ayarlar</h1>
+		<h1>Kolabria - User Settings</h1>
 	</div>
 	
 	<div class="span8">
-
 		{% if messages %}
 			{% for message in messages %}
 				<div class="alert alert-success">
@@ -19,21 +18,9 @@
 		{% endif %}
 				
 		<p>
-			Merhaba <b>{{ user }}</b>, buradan kişisel bilgilerini düzenleme
-			bağlantılarına, profil bilgilerine ve daha bir çok bağlantıya
-			ulaşabilirsin.
-		</p>
-		
-		{% if not perms.posts.add_post and not author_request_send %}
-			<p>
-				Gönderi eklemek mi istiyorsun?<br />
-				Bilgilerini paylaşmak mı istiyorsun?<br />
-				O halde yazarların arasına katıl.
-			</p>
-			<a href="{% url became_an_author %}" class="btn btn-primary btn-large">Yazar olmak istiyorum!</a>
-		{% endif %}
-		
-		<br /><br />
+    Welcome <b>{{ user }}</b>, 
+    This is your settings page 
+    </p>
 		{% include 'users/_controls.html' %}
 		
 	</div>

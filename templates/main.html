@@ -1,6 +1,6 @@
 {% load url from future %}
 
-{% load post_tags %}
+{% comment %}{% load post_tags %}{% endcomment %}
 {% load flatpages %}
 {% load markup %}
 
@@ -64,7 +64,7 @@
 	
   </head>
 
-  <body onLoad="prettyPrint()">
+  <body>
 
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
@@ -164,39 +164,23 @@
         <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">            	
-            	{% if perms.posts.add_post %}
-            		<li class="nav-header">Gönderi yönetimi</li>            		
-            		{% include 'posts/_administration.html' %}
-            	{% else %}
-            	    {% if user.is_authenticated %}
-	            		<li>
-	            			<a href="{% url 'became_an_author' %}">became author</a>
-	            		</li>
-            		{% endif %}
-            	{% endif %}
-            	
-            	{% if user.is_authenticated %}
-            		<li class="nav-header">Bağlantı yönetimi</li>
-            		<li>
-            			<a href="{% url 'links:new' %}">newlinks</a>
+              <li class="nav-header">Sidebar</li>
+                <li>
+            			<a href="{% url 'users:show_profile' user %}">Profile</a>
             		</li>
-            		<li class="nav-header">nav-header</li>
+            		<li>
+
+            		<li>
+            			<a href="{% url 'users:settings' %}">
+            				settings
+            			</a>
+           		  </li>
             		<li>
             			<a href="{% url 'users:password_change' %}">
             				Change Password
             			</a>
             		</li>
-            		<li>
-            			<a href="{% url 'users:settings' %}">
-            				settings
-            			</a>
-            		</li>
-            		<li class="nav-header">Bilgiler</li>
-            		<li>
-            			<a href="{% url 'users:show_profile' user %}">Profile</a>
-            		</li>
-            		<li>
-            			<a href="{% url 'users:update_informations' %}">
+            		            			<a href="{% url 'users:update_informations' %}">
             				update_user_info
             			</a>
             		</li>
@@ -205,22 +189,7 @@
             				update_profile
             			</a>
             		</li>
-            		<li class="nav-header">Diğer</li>
-            		<li>
-            			<a href="{% url 'users:invite_friends' %}">
-            				invite_friends
-            			</a>
-            		</li>
-            	{% endif %}
-            
-              <li class="nav-header">Latest Posts</li>
-              	{% get_five_latest_posts %}
-              <li class="nav-header">Most Read</li>
-              	{% get_five_most_reads %}
-			  <li class="nav-header">Categories</li>
-              	{% get_categories %}
-              	
-            </ul>
+            	</ul>
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span9">
