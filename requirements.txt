@@ -1,6 +1,7 @@
 django>=1.4
+mongoengine
 south
--e git+https://github.com/django-debug-toolbar/django-debug-toolbar.git#egg=debug_toolbar
 textile
+-e git+https://github.com/django-debug-toolbar/django-debug-toolbar.git#egg=debug_toolbar
 ipython
 ipdb
