@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
 # Django settings 
-
+from mongoengine import connect
 import os.path
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
+# Mongo Database settings
+connect('kolabria-new')
 
 DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': False,
@@ -135,6 +138,10 @@ INSTALLED_APPS = (
     'kolabria.links',
     'kolabria.users',
     'kolabria.main',
+    'kolabria.appliance',
+    'kolabria.walls',
+
+
     'debug_toolbar',
 #    'disqus',
     'south',
