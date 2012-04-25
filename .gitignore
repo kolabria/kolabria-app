@@ -1,8 +1,10 @@
+database
+*~
 *.pyc
+.DS_Store
+database
+.project
+.pydevproject
+media
 venv/
-build/
-
-kolabria_development
-kolabria_dev.db
-kolabria_dev.bak
-
+newenv/

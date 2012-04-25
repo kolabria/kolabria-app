@@ -1,0 +1,81 @@
+{% extends 'main.html' %}
+{% load markup %}
+
+{% block title %} {{ tuser.username }} {% endblock %}
+
+{% block content %}
+	<div class="page-header">
+		<h1>Welcome!</h1>
+	</div>
+	
+	<div class="span8">
+    	<center>
+		    <a href="{{ tuser.get_profile.get_image }}">
+		    	<img src="{{ tuser.get_profile.get_image }}" alt="">
+		    </a>
+	    </center>
+		
+		<table class="table table-bordered">
+			<tr>
+				<th>Username</th>
+				<td>{{ tuser.username }}</td>
+			</tr>
+			<tr>
+				<th>First Name</th>
+				<td>{{ tuser.first_name }}</td>
+			</tr>
+			<tr>
+				<th>Last Name</th>
+				<td>{{ tuser.last_name }}</td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td><a href="mailto:{{ tuser.email }}">{{ tuser.email }}</a></td>
+			</tr>
+			<tr>
+				<th>Joined</th>
+				<td>{{ tuser.date_joined.date }}</td>
+			</tr>
+			<tr>
+				<th>Website</th>
+				<td>
+					<a href="{{ profile.web_site }}" target="_blank">
+						{{ profile.web_site }}
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					About Me:
+				</th>
+				<td>
+					{{ profile.about}}
+				</td>
+			</tr>
+			<tr>
+				<th>City:</th>
+				<td>
+					{{ profile.get_city_display }}
+				</td>
+			</tr>
+						{% if post_list %}
+				<tr>
+					<th>Posts</th>
+					<td>
+						<ul>
+							{% for post in post_list %}
+								<li>
+									<a href="{{ post.get_absolute_url }}">{{ post }}</a>
+									/
+									<a href="{{ post.category.get_absolute_url }}">{{ post.category }}</a>
+								</li>
+							{% endfor %}
+						</ul>
+						{% include '_pagination.html' %}
+					</td>
+				</tr>
+			{% endif %}
+		</table>	
+	</div>
+	
+{% endblock %}

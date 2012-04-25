@@ -1,4 +1,5 @@
 django>=1.4
+<<<<<<< HEAD
 south
 django-debug-toolbar
 django-guardian
@@ -8,3 +9,11 @@ django-email-usernames
 
 ipdb
 ipython
+=======
+mongoengine
+south
+textile
+-e git+https://github.com/django-debug-toolbar/django-debug-toolbar.git#egg=debug_toolbar
+ipython
+ipdb
+>>>>>>> 5c2d0682f0f0a26f77d7c483300e0e6edf812223
