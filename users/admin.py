@@ -11,24 +11,15 @@ from kolabria.users.mails import decline_author_requests_mail, accept_author_req
 
 class ProfileAdmin(admin.ModelAdmin):
     fieldsets = (
-                 (u'Profil bilgileri', {
-                            'fields': ('user', 'web_site', 'about', 'city')
-                         }),
-                 (u'Profil linkleri',
-                  {
-                            'fields': (
-                                            'django_people_profile',
-                                            'django_snippets_profile',
-                                            'tuxhub_profile',
-                                            'twitter_profile',
-                                            'github_profile'
-                                       )
-                  })
-    )
+        (u'User Profile', 
+            {
+             'fields': ('user', 'web_site', 'about')
+             }),
+   )
     
     
-    search_fields = ['web_site', 'about', 'city', 'user__username']    
-    list_display  = ('user', 'web_site', 'city')
+    search_fields = ['web_site', 'about', 'user__username']    
+    list_display  = ('user', 'web_site' )
 
 
 class CoolUserAdmin(UserAdmin):
