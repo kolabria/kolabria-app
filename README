@@ -1,19 +1,5 @@
-Site yayında! www.pythontr.org
+Kolabria - user account prototype
+based on Python Turkey User Group - www.pythontr.org
+User authentication and account management built with Bootstrap
+source adapted from: https://github.com/electrocoder/pythontr_org
 
-PythonTr sitesinin kaynak kodlarıdır.
-Twitter-Bootstrap kullanılarak tekrar üretilmiştir.
-
-İlgilenenler için iletişim adresleri:
-
-* Şahin MERSIN: electrocoder@gmail.com
-* Yiğit SADIÇ: yigitsadic@gmail.com
-
-Gerekli modüller:
-
-* South - http://south.aeracode.org/
-* disqus - https://github.com/arthurk/django-disqus
-* textile - https://github.com/jsamsa/python-textile
-	
-
-Kullanım:
-	Yakında wiki sayfası yapılacaktır.
