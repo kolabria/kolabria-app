@@ -1,13 +1,11 @@
 django>=1.4
+mongoengine
 south
-
--e git+https://github.com/django-debug-toolbar/django-debug-toolbar.git#egg=debug_toolbar
 textile
-ipython
-ipdb
 
 django-debug-toolbar
 django-guardian
+
 django-phonenumber-field
 django-email-usernames
 #django-registration

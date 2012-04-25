@@ -23,8 +23,9 @@ urlpatterns = patterns('',
 
     url(r'^', include('kolabria.main.urls')),
     url(r'^', include('kolabria.posts.urls', namespace='posts')),
-    
-    url(r'^', 'main.views.home'),
+#    url(r'', include('kolabria.walls.appliance.urls')),
+    url(r'', include('kolabria.walls.urls')),
+    url(r'^', 'kolabria.main.views.home'),
 #    url(r'^public/$', public),
     url(r'^create/$', 'main.views.create_account'),
 )
