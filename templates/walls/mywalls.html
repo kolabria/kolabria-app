@@ -37,7 +37,7 @@
               </tr>
             </thead>
             <tbody>
-              {% for wall in walls.own %}
+              {% for wall in walls %}
               <tr id="{{ wall.id }}">
                 <td><a href="/walls/{{ wall.id }}">{{ wall.name }}</a></td> {% comment %} {% url kolabria.walls.views.view_wall wall.id %} {% endcomment %}
                 <td>{{ wall.status }}</td>
@@ -56,7 +56,7 @@
             </tr>
               {% endfor %}
 
-              {% for wall in walls.own %}
+              {% for wall in walls %}
               <div id="delete-{{ wall.id }}" class="modal hide fade ">
                 <div class="modal-header">
                   <a class="close" data-dismiss="modal" >&times;</a>
@@ -75,24 +75,6 @@
                 </div>
               </div><!--id -->
               {% endfor %}
-
-            {% for swall in walls.shared %} 
-              <tr id="{{ swall.id }}">
-                <td><a href="/walls/{{ swall.id }}">{{ swall.name }}</a></td>
-                <td>{{ swall.status }}</td>
-                <td>sharing</td>
-                <td>{{ swall.modified }}</td>
-                <td>
-                  <div class="btn-group">
-                    <a class="btn" href="/walls/{{ swall.id }}">open</a><a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                      <li><a href="/walls/update/{{ swall.id }}">edit details</a></li>
-                    </ul>
-                  </div>
-                <td>{{ swall.published }}</td>
-                </td>
-              </tr>
-              {% endfor %}
              </tbody>
             </table>
           </div><!--/span-->
@@ -103,7 +85,7 @@
           <div class="hero-unit well">
               <h3>No Whiteboards Found:</h3>
               <hr/>
-              <p>Click here to <a href="/walls/create" span="btn btn-primary">Create a New Whiteboard</a></p>
+              <p>Click here to <a href="/walls/create/" span="btn btn-primary">Create a New Whiteboard</a></p>
             </div>
         {% endif %}
         </div><!--span -->

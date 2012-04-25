@@ -26,7 +26,7 @@
           <h3>Enter Whiteboard Details:</h3>
           <hr />
           <form action="." method="post" class="form-horizontal">
-            {{ form.as_p }} 
+              {{ form.as_p }}{% csrf_token %} 
             <button a href="/walls/" class="btn btn-large">Cancel</button>
             <input type="submit" value="create" class="btn btn-primary btn-large">
           </form>

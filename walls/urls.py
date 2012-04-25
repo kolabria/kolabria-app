@@ -4,6 +4,7 @@ from django.conf.urls.defaults import include, patterns, url
 import views 
 
 urlpatterns = patterns('',
+    url(r'^mywalls/$', views.my_walls),
     url(r'^walls/$', views.walls),
     url(r'^walls/create/$', views.create),
     url(r'^walls/share/(?P<wid>\w+)/$', views.share),
