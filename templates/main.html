@@ -1,6 +1,6 @@
 {% load url from future %}
 
-{% comment %}{% load post_tags %}{% endcomment %}
+{% load post_tags %}
 {% load flatpages %}
 {% load markup %}
 
@@ -14,25 +14,23 @@
     <meta charset="utf-8">
     <title>
     	{% block title %}
-    	  Kolabria	
+    		Kolabria - Account Management
     	{% endblock %}
     </title>
-    
-
     <link rel="Shortcut Icon" href="{{ STATIC_URL }}img/favicon.ico"></link>
-    
 	<meta name="keywords" content="" />
-  <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow" />
 	<meta name="Revisit-after" content="1 days" />
+	<meta name="DISTRIBUTION" content="GLOBAL" />
 	<meta name="expires" content="never" />
 	<meta name="rating" content="general" />
-    
-	<meta name="description" content="Kolabria WikiWall Appliance for Real-time Collaboration" />
-
+    <meta name="author" content="kolabria" />
+	<meta name="description" content="Wikiwall Appliance Management" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Le styles -->
-  <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
-  <link href="{{ STATIC_URL }}prettify.css" rel="stylesheet">
+
+    <!-- Le styles -->
+    <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}prettify.css" rel="stylesheet">
 
     <style type="text/css">
       body {
@@ -55,16 +53,10 @@
     <link rel="apple-touch-icon" href="http://twitter.github.com/bootstrap/examples/images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="http://twitter.github.com/bootstrap/examples/images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="http://twitter.github.com/bootstrap/examples/images/apple-touch-icon-114x114.png">
-	
 
-	<!-- TinyMCE -->
-	<script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce_dev.js"></script>
-	<script type="text/javascript" src="{{ STATIC_URL }}js/tinymce_options.js"></script>
-	<!-- /TinyMCE -->
-	
   </head>
 
-  <body>
+  <body onLoad="prettyPrint()">
 
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
@@ -74,31 +66,20 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="{% url 'posts:index' %}">Kolabria</a>
+          <a class="brand" href="{% url 'links:index' %}">Kolabria</a>
           <div class="nav-collapse">
             <ul class="nav">
               <li>
-              	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              	   About
-              		<b class="caret"></b>
-              	</a>
+              	<a href="{% url 'links:index' %}">Home</a>
               </li>
-
-              	<ul class="dropdown-menu">
-              		{% for flatpage in flatpages %}
-              			<li>
-              				<a href="{{ flatpage.url }}">
-              					<i class="icon-file"></i> {{ flatpage.title }}              					
-              				</a>
-              			</li>
-              		{% endfor %}
-              	</ul>
+              <li>
+              	<a href="{% url 'links:index' %}">About</a>
               </li>
-              <li><a href="{% url 'contact' %}">Contact</a></li>
+            	</ul>
+              </li>
             </ul>
-            
-           {% if user.is_authenticated %}
-				<div class="btn-group pull-right">
+            {% if user.is_authenticated %}
+				<div class="btn-group offset6">
 					<a class="btn btn-success" href="{% url 'users:show_profile' user.username %}">{{ user.username }}</a>
 					<a class="btn btn-success dropdown-toggle" href="#" data-toggle="dropdown">
 						<span class="caret"></span>
@@ -111,48 +92,44 @@
 						</li>
 						<li>
 							<a href="{% url 'users:settings' %}">
-								<i class="icon-cog"></i> Settings 
+								<i class="icon-cog"></i> Settings
 							</a>
 						</li>
 												
 						<li class="divider"></li>
 						<li>
 							<a href="{% url 'users:logout' %}">
-								<i class="icon-off"></i> logout
+								<i class="icon-off"></i> Logout
 							</a>
 						</li>
 					</ul>
         		</div>
             {% else %}
-				<div class="btn-group pull-right">
-					<a class="btn btn-danger" href="#">Warning</a>
+				<div class="btn-group offset10">
+					<a class="btn btn-danger" href="#">Signup/Login</a>
 					<a class="btn btn-danger dropdown-toggle" href="#" data-toggle="dropdown">
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
 						<li>
 							<a href="{% url 'users:login' %}">
-								<i class="icon-ok"></i> loginok
+								<i class="icon-ok"></i> Login
 							</a>
 						</li>
 						<li>
 							<a href="{% url 'users:signup' %}">
-								<i class="icon-user"></i> signup
+								<i class="icon-user"></i> Signup
 							</a>
 						</li>
 						<li class="divider"></li>
 						<li>
 							<a href="/accounts/password_reset/">
-								<i class="icon-lock"></i> password_reset
+								<i class="icon-lock"></i> Reset Password
 							</a>
 						</li>
 					</ul>
         		</div>
             {% endif %}
-
-
-
-
 
           </div><!--/.nav-collapse -->
         </div>
@@ -162,37 +139,47 @@
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span3">
+          {% if user.is_authenticated %}
           <div class="well sidebar-nav">
             <ul class="nav nav-list">            	
-              <li class="nav-header">Sidebar</li>
-                <li>
-            			<a href="{% url 'users:show_profile' user %}">Profile</a>
-            		</li>
-            		<li>
-
-            		<li>
+          		<li class="nav-header">User Details</li>
+              <p><strong>Username: </strong>{{ user.username }}<p>
+           		<li>
             			<a href="{% url 'users:settings' %}">
-            				settings
-            			</a>
-           		  </li>
-            		<li>
-            			<a href="{% url 'users:password_change' %}">
-            				Change Password
+            				Settings
             			</a>
             		</li>
-            		            			<a href="{% url 'users:update_informations' %}">
-            				update_user_info
+            		<li class="nav-header">Profile Details</li>
+            		<li>
+            			<a href="{% url 'users:show_profile' user %}">Profilie</a>
+            		</li>
+            		<li>
+            			<a href="{% url 'users:update_informations' %}">
+            				Update Details
             			</a>
             		</li>
             		<li>
             			<a href="{% url 'users:update_profile' %}">
-            				update_profile
+            		    Update Profile	
+            			</a>
+                </li>
+            		<li>
+                <a href="{% url 'users:password_change' %}">
+                  Change Password	
+                </a>
+            		</li>
+ 
+            		<li class="nav-header">Invite Users</li>
+            		<li>
+            			<a href="{% url 'users:invite_friends' %}">
+            				Invite Users
             			</a>
             		</li>
-            	</ul>
+          {% endif %}
+           </ul>
           </div><!--/.well -->
         </div><!--/span-->
-        <div class="span9">
+        <div class="span9 offset4">
           {% block content %}
           {% endblock %}
         </div><!--/span-->
@@ -203,7 +190,12 @@
       <footer>
       	<center>
       		<p>      			
-        		&copy; 2012 RadioBeam Networks - All Rights Reserved
+         	<p>
+        		<a href="http://www.djangoproject.com/"><img
+                    src="http://media.djangoproject.com/img/badges/djangoproject120x25.gif"
+                    border="0" alt="A Django powered site" title="A Django project." /></a>
+        		<br />
+        		All rights reserved. &copy; 2012 Radiobeam Networks
         	</p>
        </center>
       </footer>

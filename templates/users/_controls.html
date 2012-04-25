@@ -1,42 +1,42 @@
 <div class="well">
 	<ul class="nav nav-list">
-		<li class="nav-header">Kullanıcı işlemleri</li>
+		<li class="nav-header">User Profile Settings</li>
 		<li>
 			<a href="{% url users:password_change %}">
 				<i class="icon-lock"></i> 
-				Parola değiştirme
+			  Change Password	
 			</a>
 		</li>
 		<li>
-			<a href="{% url users:disable_account %}" id="confirm" title="Bu işlem geri alınamaz. Devam etmek istediğinize emin misiniz?">
+			<a href="{% url users:disable_account %}" id="confirm" title="Deleting an account cannot be reversed. Are you sure?">
 				<i class="icon-ban-circle"></i>
-				Hesabımı sil
+				Delete My Account
 			</a>
 		</li>
-		<li class="nav-header">Bilgiler</li>
+		<li class="nav-header">My Profile</li>
 		<li>
 			<a href="{% url users:show_profile user.username %}">
 				<i class="icon-user"></i>
-				Profilim
+				Profile
 			</a>
 		</li>
 		<li>
 			<a href="{% url users:update_informations %}">
 				<i class="icon-edit"></i>
-				Kişisel bilgilerimi düzenle
+				Update Details
 			</a>
 		</li>
 		<li>
 			<a href="{% url users:update_profile %}">
 				<i class="icon-edit"></i>
-				Profilimi düzenle
+				Update Profile
 			</a>
 		</li>
-		<li class="nav-header">Diğer</li>
+		<li class="nav-header">Invite Users</li>
 		<li>
 			<a href="{% url users:invite_friends %}">
 				<i class="icon-list-alt"></i>
-				Arkadaşlarımıı davet et
+			  Invite Users
 			</a>
 		</li>
 	</ul>

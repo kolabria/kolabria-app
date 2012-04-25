@@ -1,13 +1,14 @@
 {% extends 'main.html' %}
 
-{% block title %} Kolabria - User Settings{% endblock %}
+{% block title %} Settings {% endblock %}
 
 {% block content %}
 	<div class="page-header">
-		<h1>Kolabria - User Settings</h1>
+		<h1>Settings</h1>
 	</div>
 	
 	<div class="span8">
+
 		{% if messages %}
 			{% for message in messages %}
 				<div class="alert alert-success">
@@ -18,10 +19,11 @@
 		{% endif %}
 				
 		<p>
-    Welcome <b>{{ user }}</b>, 
-    This is your settings page 
-    </p>
-		{% include 'users/_controls.html' %}
+			Welcome <b>{{ user }}</b>,
+			You can manage your personal settings here.
+		</p>
 		
+		<br /><br />
+		{% include 'users/_controls.html' %}
 	</div>
 {% endblock %}

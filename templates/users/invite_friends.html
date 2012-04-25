@@ -1,11 +1,11 @@
 {% extends 'main.html' %}
 
-{% block title %} Arkadaşlarını davet et {% endblock %}
+{% block title %} Invite Users {% endblock %}
 
 {% block content %}
 	
 	<div class="page-header">
-		<h1>Arkadaşlarını davet et</h1>
+		<h1>Invite Users</h1>
 	</div>
 		
 	<div class="span8">		
@@ -34,8 +34,8 @@
 			{% endfor %}
 			<div class="form-actions">
 				<input type="hidden" name="next" value="{{ next }}" />
-				<button class="btn btn-primary" type="submit">Gönder</button>
-				<a onclick="history.back()" class="btn">Geri</a>
+				<button class="btn btn-primary" type="submit">Submit</button>
+				<a onclick="history.back()" class="btn">Back</a>
 			</div>
 		</form>
 	</div>
