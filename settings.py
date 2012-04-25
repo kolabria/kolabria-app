@@ -51,7 +51,7 @@ ADMINS = (
 )
 
 INTERNAL_IPS = ('127.0.0.1',)
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/mywalls/'
 LOGIN_URL = '/accounts/login/'
 
 LOGOUT_URL = '/accounts/logout/'
