@@ -1,14 +1,45 @@
 # -*- coding: utf-8 -*-
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 from django.contrib.auth.models import Group
-
+from django.http import HttpResponseRedirect
+from django.template.context import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+
+from django.contrib.formtools.wizard.views import SessionWizardView
 
 from kolabria.main.forms import ContactForm, AuthorForm
 from kolabria.main.mails import ContactMail, AuthorMail
 
+
+def public(request):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect('/walls/')
+    else:
+        return HttpResponseRedirect('/')
+
+def home(request):
+    data = {'title': 'Kolabria - Real-time collaboration, made simple',}
+    return render_to_response('main/home.html', data,
+                              context_instance=RequestContext(request)) 
+
+def create_account(request):
+    data = {'title': 'Kolabria - Create a new company account and administrative user',}
+    return render_to_response('main/create.html', data,
+                              context_instance=RequestContext(request)) 
+
+
+"""
+def CreateAccount(SessionWizardView):
+    def done(self, form_list, **kwargs):
+        user_form = form_list[0]
+        account_form = form_list[1]
+        owner = user_form.save()
+        account_form.instance.owner = owner
+        new_account = account_form.save()
+        return HttpResponseRedirect('/welcome/')
+"""
 
 def contact(request): 
     form = ContactForm(request.POST or None)

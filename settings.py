@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Django settings 
 
 import os.path
@@ -24,7 +23,6 @@ DEBUG_TOOLBAR_PANELS = (
 
 PATH = os.path.dirname(__file__)
 
-
 MEDIA_ROOT = PATH + '/media/'
 MEDIA_URL = '/media/' 
     
@@ -37,24 +35,17 @@ STATICFILES_DIRS = (
     PATH + '/static',
 )
 
-# Email ayarları;
-
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 
 EMAIL_HOST_USER = 'testkolabria@gmail.com'
 EMAIL_HOST_PASSWORD = 'test_kolabria'
-
 EMAIL_PORT = 587
 FROM_EMAIL = EMAIL_HOST_USER
 
-
 ADMINS = (
-    (u'Şahin Mersin', 'electrocoder@gmail.com'), 
-    (u'Yiğit Sadıç', 'yigitsadic@gmail.com'),     
+    (u'admin', 'admin@kolabria.com'),     
 )
-
-
 
 INTERNAL_IPS = ('127.0.0.1',)
 LOGIN_REDIRECT_URL = '/'
@@ -77,15 +68,11 @@ DATABASES = {
     }
 }
 
-TIME_ZONE = 'Europe/Istanbul'
-
-LANGUAGE_CODE = 'tr-TR'
-
+TIME_ZONE = 'America/Montreal'
+LANGUAGE_CODE = 'en-us'
 SITE_ID = 1
-
-USE_I18N = True
-
-USE_L10N = True
+USE_I18N = False
+USE_L10N = False
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -112,13 +99,12 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'kolabria.urls'
 
 TEMPLATE_DIRS = (
-                 PATH + '/templates',
+    PATH + '/templates',
 )
 
 # fixtures
-
 FIXTURE_DIRS = (
-                PATH + '/fixtures',
+    PATH + '/fixtures',
 )
 
 #DISQUS_API_KEY = 'rr3r45gg7hoAnpar32erwr32432rerSLlxoos2JpnY' 
@@ -144,7 +130,7 @@ INSTALLED_APPS = (
     'django.contrib.localflavor',
     'django.contrib.markup',
 
-    'kolabria.polls',
+#    'kolabria.polls',
     'kolabria.posts',
     'kolabria.links',
     'kolabria.users',
