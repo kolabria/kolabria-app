@@ -4,7 +4,7 @@ from django.conf.urls.defaults import patterns, include, url
 from posts.views import PostListView, PostSearchListView,\
 CategoryPostListView, MyPostListView, CategoryListView, NewPostView
 
-urlpatterns = patterns('kolabria.posts.views',
+urlpatterns = patterns('posts.views',
 #     url(r'^$', PostListView.as_view(), name='index'),
     url(r'^posts/new/$', 'new', name='new'),
     url(r'^posts/new2/$', NewPostView.as_view(), name='new2'),
