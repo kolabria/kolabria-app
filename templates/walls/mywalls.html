@@ -37,14 +37,14 @@
             <tbody>
               {% for wall in walls %}
               <tr id="{{ wall.id }}">
-                <td><a href="/walls/{{ wall.id }}">{{ wall.name }}</a></td> {% comment %} {% url kolabria.walls.views.view_wall wall.id %} {% endcomment %}
+                <td><a href="/walls/{{ wall.id }}/">{{ wall.name }}</a></td> {% comment %} {% url kolabria.walls.views.view_wall wall.id %} {% endcomment %}
                 <td>owner</td>
                 <td>
                   <div class="btn-group">
-                    <a class="btn" href="/walls/{{ wall.id }}">open</a><a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                    <a class="btn" href="/walls/{{ wall.id }}/">open</a><a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="/walls/update/{{ wall.id }}">edit details</a></li>
-                      <li><a href="#delete-{{ wall.id }}" data-toggle="modal">delete</a></li>
+                      <li><a href="/walls/update/{{ wall.id }}/">edit details</a></li>
+                      <li><a href="#delete-{{ wall.id }}/" data-toggle="modal">delete</a></li>
                     </ul>
                   </div>
                 </td>
