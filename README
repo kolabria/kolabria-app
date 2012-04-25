@@ -3,3 +3,6 @@ based on Python Turkey User Group - www.pythontr.org
 User authentication and account management built with Bootstrap
 source adapted from: https://github.com/electrocoder/pythontr_org
 
+kolabria-app: 
+A web application built in Django and designed to securely manage 
+stateful features of the Kolabria Wikiwall appliance application. 
