@@ -7,147 +7,123 @@ from django.contrib.sitemaps import ping_google
 from django.core.exceptions import ValidationError
 from django.utils.safestring import mark_safe
 
-from kolabria.utils import slugify_unicode
+#from kolabria.utils import slugify_unicode
 
 
 GOOGLE_CODE_PRETTIFY = (u'''
     <a href='http://google-code-prettify.googlecode.com/svn/trunk/README.html' target='_blank'>
-        Kod renklendirme için tıklayınız.
+       Google Prettify
     </a>
 ''')
 
 
 class Category(models.Model):
     """
-        Kategorileri depolamak için kullanılan model.
-        'name' alanını içerir.
+    Category for Posts
     """
-    
-    name = models.CharField("Adı", unique=True, max_length=50)
+    name = models.CharField("Name", unique=True, max_length=50)
     slug = models.SlugField('Slug', max_length = 255, blank = True, null = True)
-    
 #    image = models.ImageField(upload_to='category_images')
-    
+
     def __unicode__(self):
         return self.name
-    
-    
+
     @models.permalink
     def get_absolute_url(self):
         return ('posts:show_category', [self.slug]) 
-    
-    
+
+
     class Meta:
-        verbose_name        = "Kategori"
-        verbose_name_plural = "Kategoriler"
-        
+        verbose_name        = "Category"
+        verbose_name_plural = "Categories"
         ordering = ['name']
 
 
 def validate_user_is_in_authors_group(value):
     """
-        Gönderiyi ekleyen üyenin
-        yazar olup olmadığını kontrol eder.
-        
-        Yazar değilse uyarı verir.
+    Validate user is in the authors group
     """
-    
     user  = User.objects.get(id = value)
     group = Group.objects.get(name = 'Yazarlar')
-    
+
     if not user in group.user_set.all():
-        raise ValidationError(u'%s adlı kullanıcı bir yazar değil.' % user.username)
-        
+        raise ValidationError(u'%s is now authorized to write.' % user.username)
+
 
 class PostManager(models.Manager):
     def published(self):
         return Post.objects.filter(published=True)
-    
-    
+
+
     def search(self, q):
         return Post.objects.published().filter(content__icontains=q)
 
 
 class Post(models.Model):
     """
-        Gönderileri depolamak için yapılmış model.
-        
-        'short_title': 35 karaktere kadar başlığı yazar
-        ondan sonra '...' koyar.
-        
-        'short_content': 125 karaktere kadar içeriği yazar
-        ondan sonra '...' koyar.
-        
-        'increase_read_count': Okunma sayısını 1 arttırır.
+    Post model for posts
+        'short_title': 35 character author title
+        'short_content': 125 character short content
+        'increase_read_count': Increment read count by one.
     """
-    
-    
+
     author = models.ForeignKey(
                                User,
-                               verbose_name = "Yazar",
-                               help_text = "Gönderin yazarı.",
+                               verbose_name = "Author",
+                               help_text = "Post Author",
                                validators = [validate_user_is_in_authors_group]
                                )
-    
+
     title = models.CharField(
-                             "Başlık",
-                             help_text = "Gönderinin başlığı",
+                             "title",
+                             help_text = "Post title",
                              max_length=255
-    )
-    
-    category = models.ForeignKey(Category, verbose_name = "Kategori")
-    
-    slug = models.SlugField("URL için uygun hali")
-    
+                            )
+    category = models.ForeignKey(Category, verbose_name = "Category")
+    slug = models.SlugField("Website URL")
     content = models.TextField(
-                               "Gönderinin içeriği",
-                               help_text = mark_safe('Bu alanda HTML kullanabilirsiniz. ' + GOOGLE_CODE_PRETTIFY),
-    )
-    
+                               "Contents of this post",
+                               help_text = mark_safe('You HTML directly in this field. ' + GOOGLE_CODE_PRETTIFY),
+                              )
     published = models.BooleanField(
-                                    "Yayınlasın mı?",
+                                    "Is Published",
                                     default=True,
-                                    help_text = "Bu alan gönderinin yayınlanıp yayınlanmayacağını belirler."
-    )
-    
-    tags = models.CharField("Etiket(ler)", max_length=100, help_text = "Virgül (,) ile birbirlerinden ayırabilirsiniz.",
+                                    help_text = "Determines whether or not the post is published."
+                                   )
+    tags = models.CharField("Tags", max_length=100, help_text = "separate tags with commas (,)",
                             blank = True, null = True
                             )
-    read_count = models.IntegerField("Okunma sayısı", default=0)
-    
+    read_count = models.IntegerField("Read Count", default=0)
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
-    
     objects= PostManager()
-    
+
     def __unicode__(self):
         return self.title
-    
+
 
     @models.permalink
     def get_absolute_url(self):
         return ('posts:show', [self.category.slug, self.slug])
-    
-    
+
+
     def save(self, force_insert=False, force_update=False):
-        
         if not self.id:
-            self.slug = slugify_unicode(u"%s" % self.title)
-        
+            self.slug = u"%s" % self.title
+
         super(Post, self).save(force_insert, force_update)
-        
+
         try:
             ping_google()
         except Exception:
             pass
-    
-         
+
     def short_title(self):
         if len(self.title) > 34:
             return self.title[:35] + '...'
         else:
             return self.title
-     
+
     def short_content(self):
         if len(self.content) > 124:
             return self.content[:125] + '...'
@@ -157,10 +133,9 @@ class Post(models.Model):
     def increase_read_count(self):
         self.read_count += 1
         self.save()
-         
+
     class Meta:
-        verbose_name = "Gönderi"
-        verbose_name_plural = "Gönderiler"
-        
+        verbose_name = "Post"
+        verbose_name_plural = "Posts"
         ordering = ['-created_at']
         get_latest_by = 'created_at'
