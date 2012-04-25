@@ -16,15 +16,13 @@
             </ul>
  
          {% if user.is_authenticated %}
-         <p class="navbar-text pull-right">Logged in as <a href="#">{{ user.email}}</a> | <a href="/logout">Logout</a></p>
+         <p class="navbar-text pull-right">Logged in as <a href="#">{{ user.email}}</a> | <a href="/accounts/logout/">Logout</a></p>
          {% else %} 
-             {% comment %} 
              <form class="form-inline navbar-text pull-right">Login: 
                  <input type="text" class="input-small" placeholder="username">
                  <input type="password" class="input-small" placeholder="Password">
                  <button type="submit" class="btn">Go</button>
              </form>
-             {% endcomment %}
          {% endif %}
           </div><!--/.nav-collapse -->
         </div>
