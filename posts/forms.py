@@ -2,7 +2,7 @@
 
 from django.forms import ModelForm
 
-from kolabria.posts.models import Post, Category
+from models import Post, Category
 
 #from tinymce.widgets import TinyMCE
 

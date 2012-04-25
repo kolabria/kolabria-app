@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls.defaults import patterns, include, url
 
-from kolabria.posts.views import PostListView, PostSearchListView,\
+from posts.views import PostListView, PostSearchListView,\
 CategoryPostListView, MyPostListView, CategoryListView, NewPostView
 
 urlpatterns = patterns('kolabria.posts.views',

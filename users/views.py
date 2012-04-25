@@ -12,11 +12,11 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
 from django.contrib.auth import logout
 
-from kolabria.users.forms import UserSettings, ProfileForm, InviteFriendForm
-from kolabria.users.models import Profile
-from kolabria.users.mails import invite_friend_mail, user_signed_up
+from users.forms import UserSettings, ProfileForm, InviteFriendForm
+from users.models import Profile
+from users.mails import invite_friend_mail, user_signed_up
 
-from kolabria.utils import ProtectedView
+from utils import ProtectedView
 
 
 class SettingsView(TemplateView, ProtectedView):

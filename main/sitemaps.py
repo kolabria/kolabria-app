@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from kolabria.posts.models import Post, Category
-from kolabria.links.models import Link
-from kolabria.polls.models import Poll
+from posts.models import Post, Category
+from links.models import Link
+from polls.models import Poll
 
 from django.contrib.sitemaps import FlatPageSitemap, GenericSitemap
 from django.conf.urls.defaults import patterns, url

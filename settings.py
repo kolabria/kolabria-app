@@ -98,7 +98,7 @@ MIDDLEWARE_CLASSES = (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
-ROOT_URLCONF = 'kolabria.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     PATH + '/templates',

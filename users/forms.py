@@ -3,7 +3,7 @@ from django import forms
 from django.forms import ModelForm
 
 from django.contrib.auth.models import User
-from kolabria.users.models import Profile
+from users.models import Profile
 
 
 class UserSettings(ModelForm):    

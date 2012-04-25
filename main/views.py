@@ -9,8 +9,8 @@ from django.contrib import messages
 
 from django.contrib.formtools.wizard.views import SessionWizardView
 
-from kolabria.main.forms import ContactForm, AuthorForm
-from kolabria.main.mails import ContactMail, AuthorMail
+from main.forms import ContactForm, AuthorForm
+from main.mails import ContactMail, AuthorMail
 
 
 def public(request):
