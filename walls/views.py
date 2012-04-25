@@ -30,10 +30,18 @@ from kolabria.walls.models import Wall, WallForm
 
 @login_required
 def my_walls(request):
+    new_wall = WallForm(request.POST or None)
     walls = Wall.objects.all()
+
+    if new_wall.is_valid():
+        new_wall.instance.owner = request.user
+        new_wall.save()
+        messages.success(request, 'Successfully added new wall: %s' % new_wall.name)
+        return HttpResponseRedirect('/mywalls/')
 
     data = {'title': 'Kolabria - WikiWall Dashboard',
             'walls': walls,
+            'new_form': new_wall,
            }
 
     return render_to_response('walls/mywalls.html', data,
