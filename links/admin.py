@@ -2,7 +2,7 @@
 
 from django.contrib import admin
 
-from kolabria.links.models import Link
+from models import Link
 
 class LinkAdmin(admin.ModelAdmin):
     list_display = ('title', 'anchor_tag', 'confirmed')

@@ -40,7 +40,6 @@ STATICFILES_DIRS = (
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-
 EMAIL_HOST_USER = 'testkolabria@gmail.com'
 EMAIL_HOST_PASSWORD = 'test_kolabria'
 EMAIL_PORT = 587
@@ -99,7 +98,7 @@ MIDDLEWARE_CLASSES = (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
-ROOT_URLCONF = 'kolabria.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     PATH + '/templates',
@@ -134,12 +133,12 @@ INSTALLED_APPS = (
     'django.contrib.markup',
 
 #    'kolabria.polls',
-    'kolabria.posts',
-    'kolabria.links',
-    'kolabria.users',
-    'kolabria.main',
-    'kolabria.appliance',
-    'kolabria.walls',
+    'posts',
+    'links',
+    'users',
+    'main',
+    'appliance',
+    'walls',
 
 
     'debug_toolbar',

@@ -7,13 +7,13 @@ from django.template.context import RequestContext
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 
-from kolabria.walls.forms import NewWallForm, UpdateWallForm, DeleteWallForm
-from kolabria.walls.forms import ShareWallForm, UnshareWallForm
-from kolabria.walls.forms import PubWallForm, UnpubWallForm 
+from walls.forms import NewWallForm, UpdateWallForm, DeleteWallForm
+from walls.forms import ShareWallForm, UnshareWallForm
+from walls.forms import PubWallForm, UnpubWallForm 
 
 from django.contrib.auth.models import User
 #from mongoengine.django.auth import User
-from kolabria.walls.models import Wall, WallForm
+from walls.models import Wall, WallForm
 #from kolabria.appliance.models import Box
 
 
