@@ -2,7 +2,7 @@
 
 from django.conf.urls.defaults import patterns, include, url
 
-from kolabria.links.views import LinkListView, NewLinkView
+from views import LinkListView, NewLinkView
 
 urlpatterns = patterns('kolabria.links.views',
                        url(r'^$', LinkListView.as_view(), name='index'),

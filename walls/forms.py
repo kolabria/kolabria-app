@@ -1,7 +1,7 @@
 from mongoengine.django.auth import User
 
-from kolabria.walls.models import Wall
-from kolabria.appliance.models import Box
+from walls.models import Wall
+from appliance.models import Box
 
 from django.forms.formsets import formset_factory
 from django.utils.safestring import mark_safe 
@@ -9,35 +9,24 @@ from django import forms
 
 
 class NewWallForm(forms.Form):
-    OPTIONS = ()
     name = forms.CharField(widget=forms.TextInput(
                            attrs={'placeholder': 'Name this Wikiwall',
                                   'class': 'span4'}),
                            max_length=30, 
                            required=True)
-
-    placeholder = 'steve.jobs@apple.com, jimi.hendrix@rocknroll.com, '
-    placeholder += 'santa.clause@northpole.ca, etc ...'
-    invited = forms.CharField(widget=forms.Textarea(
-                                  attrs={'placeholder': placeholder,
-                                         'class': 'span8'}),
-                              required=False)
+"""
+    OPTIONS = ()
     all_boxes = Box.objects.all()
+
     for box in all_boxes:
         OPTIONS += ( box.id, box.name ),
+
     publish = forms.MultipleChoiceField(
                        widget=forms.SelectMultiple(
                                       attrs={'class': 'span4'}),
                        choices=OPTIONS,
                        required=False)
-
-#    def clean_name(self):
-#        try:
-#            exists = Wall.objects.filter(name=name))
-#        except real.DoesNotExist:
-#            return self.cleaned_data['invited'] 
-#        raise forms.ValidationError(invited)
-#        raise forms.ValidationError("Sorry, %s is not a valid user. Please try again" % invited)
+"""
 
 class DeleteWallForm(forms.Form):
     confirmed = forms.BooleanField(initial=False, required=True)

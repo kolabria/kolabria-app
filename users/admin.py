@@ -5,21 +5,21 @@ from django.contrib.auth.admin import UserAdmin
 
 from django.contrib.auth.models import User, Group
 
-from kolabria.users.models import Profile
-from kolabria.users.mails import decline_author_requests_mail, accept_author_requests_mail
+from models import Profile
+from mails import decline_author_requests_mail, accept_author_requests_mail
 
 
 class ProfileAdmin(admin.ModelAdmin):
     fieldsets = (
         (u'User Profile', 
             {
-             'fields': ('user', 'web_site', 'about')
+             'fields': ('user', 'city', 'about')
              }),
    )
     
     
-    search_fields = ['web_site', 'about', 'user__username']    
-    list_display  = ('user', 'web_site' )
+    search_fields = ['city', 'about', 'user__username']    
+    list_display  = ('user', 'city', )
 
 
 class CoolUserAdmin(UserAdmin):

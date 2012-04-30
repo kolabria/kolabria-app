@@ -7,15 +7,15 @@ from django.template.context import RequestContext
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 
-from kolabria.walls.forms import NewWallForm, UpdateWallForm, DeleteWallForm
-from kolabria.walls.forms import ShareWallForm, UnshareWallForm
-from kolabria.walls.forms import PubWallForm, UnpubWallForm 
+from walls.forms import NewWallForm, UpdateWallForm, DeleteWallForm
+from walls.forms import ShareWallForm, UnshareWallForm
+from walls.forms import PubWallForm, UnpubWallForm 
 
-from mongoengine.django.auth import User
-from kolabria.walls.models import Wall
-from kolabria.appliance.models import Box
+from django.contrib.auth.models import User
+#from mongoengine.django.auth import User
+from walls.models import Wall, WallForm
+#from kolabria.appliance.models import Box
 
-import ipdb
 
 # Legend of urls and views
 #walls             url(r'^walls/$', views.walls), 
@@ -29,59 +29,37 @@ import ipdb
 
 
 @login_required
+def my_walls(request):
+    new_wall = WallForm(request.POST or None)
+    walls = Wall.objects.all()
+
+    if new_wall.is_valid():
+        new_wall.instance.owner = request.user
+        new_wall.save()
+        messages.success(request, 'Successfully added new wall: %s' % new_wall.name)
+        return HttpResponseRedirect('/mywalls/')
+
+    data = {'title': 'Kolabria - WikiWall Dashboard',
+            'walls': walls,
+            'new_form': new_wall,
+           }
+
+    return render_to_response('walls/mywalls.html', data,
+                              context_instance=RequestContext(request))
+
+
+
+@login_required
 def create(request):
-    form = NewWallForm(request.POST or None)
+    form = WallForm(request.POST or None)
     form.fields['name'].label = 'Enter WikiWall Name'
-    form.fields['invited'].label = 'Invite users by email'
 
     if form.is_valid():
-        wall = Wall.objects.create(owner=request.user,
-                                   name=request.POST['name'])
-        wall.save()
-        wid = wall.id
-        name = wall.name
-     
-        invited_emails = request.POST.get('invited', '')
-        ipdb.set_trace() 
-        if invited_emails:
-            invited_list = invited_emails.split(',')
-            clean_emails = [ email.strip() for email in invited_list ]
-            for email in clean_emails:
-                try:
-                    real = User.objects.get(email=email)
-                    if email not in wall.sharing:
-                        wall.sharing.append(email)
-                    else:
-                        messages.warning(request, '%s is already sharing' % email)
-                except User.DoesNotExist:
-                    messages.warning(request, 'Error: no account found for %s. Not invited')
-                messages.info(request, 'Successfully added: %s' % email)
-
-
-        if request.POST.getlist('publish'):
-            # update wall.published model
-            wall.published = request.POST.getlist('publish')
-            wall.save()
-            pub_msg = 'wall.published: %s' % wall.published
-            messages.success(request, pub_msg)
-            boxes = [ Box.objects.get(id=box) for box in wall.published ]
-            messages.info(request, 'Boxes: %s' % boxes)
-            for box in boxes:
-                box_msg = 'box.name: %s | box.walls: %s | ' % (box.name, box.walls)
-                box_msg += 'wall.name: %s | wall.id: %s' %  (wall.name,
-                        wall.id)
-                messages.info(request, box_msg)
-                box.walls.append(str(wall.id))
-                box.save()
-                box_pub_msg = 'updated box.published to: %s for box.name: %s' % \
-                                                            (box.walls, box.name)
-
-        messages.success(request, 'Successfully created Wall: %s - %s' % \
-                                                              (wid, name))
-        return HttpResponseRedirect('/walls/')
-
+        form.instance.owner = request.user
+        form.save()
+        return HttpResponseRedirect('/mywalls/')
     data = {'title': 'Kolabria - Create a new WikiWall',
-            'form': form }
+            'form': form, }
     return render_to_response('walls/create.html', data,
                               context_instance=RequestContext(request))
 
@@ -111,18 +89,15 @@ def delete(request, wid):
 @login_required
 def walls(request):
     # Generate New Wall Form logic but hide form behind modal
-    new_form = NewWallForm()
+    new_form = WallForm()
     new_form.fields['name'].label = 'Enter WikiWall Name'
-    invited_label = 'Invite users by email address separate by commas.'
-    new_form.fields['invited'].label = invited_label
 
     del_form = DeleteWallForm()
     del_form.fields['confirmed'].label = ''
     del_form.initial['confirmed'] = True
 
     own = Wall.objects.filter(owner=request.user)
-    shared = Wall.objects.filter(sharing=request.user.email)
-    walls = {'own': own, 'shared': shared,}
+    walls = {'own': own, }
 
     data = {'title': 'Kolabria - WikiWall Dashboard', 
             'walls': walls, 
@@ -321,7 +296,6 @@ def update(request, wid):
     update_form.fields['invited'].label = 'Invite new users by email address'
 
     if update_form.is_valid():
-#        ipdb.set_trace()
         # process invited if detected in POST
         if request.POST.get('invited'): 
             invited = request.POST.get('invited')

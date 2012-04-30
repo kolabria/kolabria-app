@@ -2,7 +2,7 @@
 from django.conf.urls.defaults import patterns, include, url
 from django.contrib.auth.views import login, logout, password_change
 
-from kolabria.users.views import SettingsView, AuthorListView,\
+from users.views import SettingsView, AuthorListView,\
 UserPostListView, PeopleListView
 
 
@@ -12,7 +12,7 @@ PASSWORD_CHANGE_DICT = {
 }
 
 
-urlpatterns = patterns('kolabria.users.views',
+urlpatterns = patterns('users.views',
        # yazarlar
        url(r'^authors/$', AuthorListView.as_view(), name='authors'),
        url(r'^people/$', PeopleListView.as_view(), name='people'),
@@ -37,5 +37,5 @@ urlpatterns = patterns('kolabria.users.views',
        url(r'^settings/update_profile/$', 'update_profile', name='update_profile'),
 
        url(r'^invite_friends/$', 'invite_friends', name='invite_friends'),
-       url(r'^password_reset/', include('kolabria.users.password_reset_urls')),             
+       url(r'^password_reset/', include('users.password_reset_urls')),             
 )

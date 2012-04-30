@@ -16,18 +16,21 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 urlpatterns = patterns('',
-    url(r'^links/', include('kolabria.links.urls', namespace='links')),
+    url(r'^links/', include('links.urls', namespace='links')),
     #    url(r'^polls/', include('kolabria.polls.urls', namespace='polls')),
-    url(r'^accounts/', include('kolabria.users.urls', namespace='users')),
+    url(r'^accounts/', include('users.urls', namespace='users')),
+    url(r'^accounts/create/$', 'main.views.create_account'),
+    url(r'^accounts/welcome/$', 'main.views.welcome'),
     url(r'^admin/', include(admin.site.urls)),
-
-    url(r'^', include('kolabria.main.urls')),
-    url(r'^', include('kolabria.posts.urls', namespace='posts')),
+    url(r'^signup/$', 'main.views.signup'),
+    
+    url(r'^create/$', 'main.views.create'),
+    url(r'', include('walls.urls')),
+    url(r'^', include('main.urls', namespace='main')),
+    url(r'^', include('posts.urls', namespace='posts')),
 #    url(r'', include('kolabria.walls.appliance.urls')),
-    url(r'', include('kolabria.walls.urls')),
-    url(r'^', 'kolabria.main.views.home'),
+    url(r'^', 'main.views.home'),
 #    url(r'^public/$', public),
-    url(r'^create/$', 'main.views.create_account'),
 )
 
 if settings.DEBUG:

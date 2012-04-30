@@ -1,26 +1,48 @@
 from django.core.exceptions import ObjectDoesNotExist, ValidationError
 
+from django.db import models
+from django.forms import ModelForm, TextInput, SlugField, IntegerField
+
 from mongoengine import connect, Document
 from mongoengine import ReferenceField, StringField, DateTimeField
 from mongoengine import EmailField, ListField, ObjectIdField
 
-from mongoengine.django.auth import User
+from django.contrib.auth.models import User
+#from mongoengine.django.auth import User
 from users.models import Account
 from appliance.models import Box
 from datetime import datetime
 from django import forms
 
+
+class Wall(models.Model):
+    """
+    Wall model in SQL to represent Wall objects
+    """
+    owner = models.ForeignKey(User, editable=False)
+    name = models.CharField('Wall Name', max_length=30)
+    description = models.CharField('Description', max_length=256)
+
+    def __unicode__(self):
+        """
+        Returns the Wall Name as unicode description for admin and shell
+        """
+        return self.name
+
+
+class WallForm(ModelForm):
+    class Meta:
+        model = Wall
+
+"""
 class Wall(Document):
-    """
-    Wall model in MongoDB to represent Wall objects
-    """
-    STATUS_CHOICES = (
+   STATUS_CHOICES = (
         (u'Active', u'Active'),
         (u'Private', u'Private'),
         (u'Inactive', u'Inactive'),
     )        
 #    company = ReferenceField(Account)
-#    owner = ReferenceField(User)
+    owner = ReferenceField(User)
     name = StringField(max_length=32, required=True)
     description = StringField(max_length=256, required=False)
     status = StringField(default='Active', 
@@ -35,9 +57,6 @@ class Wall(Document):
 
 
     def __unicode__(self):
-        """
-        Returns the Wall Name as unicode description for admin and shell
-        """
         return self.name
 
     def clean(self):
@@ -45,3 +64,4 @@ class Wall(Document):
         for id in published:
             if not Box.objects.get(id=id):
                 raise ValidationError('Invalid Appliance_id: %s' % id)
+"""

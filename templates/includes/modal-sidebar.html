@@ -21,7 +21,7 @@
       </div>
       <div class="modal-body">
            <form action="/walls/create/" method="post" class="form-horizontal">
-            {{ new_form.as_p }} 
+             {{ new_form.as_p }}{% csrf_token %}
            {% comment %}<button a href="/walls/" class="btn btn-large offset2">Cancel</button>{% endcomment %}
            <input type="submit" value="Create WikiWall" class="btn btn-primary btn-large pull-right" data-content="Click here to create your WikiWall">
          </form>

@@ -2,7 +2,7 @@
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 
-from kolabria.posts.models import Post, Category
+from posts.models import Post, Category
 from django.contrib.auth.models import User
 
 

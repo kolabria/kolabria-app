@@ -10,7 +10,6 @@ from kolabria.appliance.models import Box
 from kolabria.appliance.forms import PubWallForm, UnsubWallForm
 from datetime import datetime
 
-import ipdb
 
 @login_required
 def appliances(request):
@@ -22,7 +21,6 @@ def appliances(request):
 
 
 def auth_box(request):
-#    ipdb.set_trace()
     user_agent = request.META['HTTP_USER_AGENT']
     data = {'title': 'Kolabria - Valid Appliance ',}
     if user_agent[:4] == 'WWA-':
@@ -39,7 +37,6 @@ def auth_box(request):
 
 
 def the_box(request, bid):
-#    ipdb.set_trace()
     unsub_form = UnsubWallForm()
     
     pub_form = PubWallForm()
@@ -64,7 +61,6 @@ def the_box(request, bid):
 
 
 def pubwall(request, bid):
-#    ipdb.set_trace()
     box = Box.objects.get(id=bid)
     box_name = box.name
     walls = [ Wall.objects.get(id=wid) for wid in box.walls ]

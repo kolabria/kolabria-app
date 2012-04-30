@@ -10,7 +10,7 @@ TEMPLATE_DEBUG = DEBUG
 connect('kolabria-new')
 
 DEBUG_TOOLBAR_CONFIG = {
-    'INTERCEPT_REDIRECTS': False,
+    'INTERCEPT_REDIRECTS': True,
 }
 
 DEBUG_TOOLBAR_PANELS = (
@@ -40,7 +40,6 @@ STATICFILES_DIRS = (
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-
 EMAIL_HOST_USER = 'testkolabria@gmail.com'
 EMAIL_HOST_PASSWORD = 'test_kolabria'
 EMAIL_PORT = 587
@@ -51,7 +50,7 @@ ADMINS = (
 )
 
 INTERNAL_IPS = ('127.0.0.1',)
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/mywalls/'
 LOGIN_URL = '/accounts/login/'
 
 LOGOUT_URL = '/accounts/logout/'
@@ -92,14 +91,16 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'subdomains.SubdomainMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
-ROOT_URLCONF = 'kolabria.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     PATH + '/templates',
@@ -134,12 +135,12 @@ INSTALLED_APPS = (
     'django.contrib.markup',
 
 #    'kolabria.polls',
-    'kolabria.posts',
-    'kolabria.links',
-    'kolabria.users',
-    'kolabria.main',
-    'kolabria.appliance',
-    'kolabria.walls',
+    'posts',
+    'links',
+    'users',
+    'main',
+    'appliance',
+    'walls',
 
 
     'debug_toolbar',

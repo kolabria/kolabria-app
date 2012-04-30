@@ -3,7 +3,7 @@
 from django.core.mail import send_mail, send_mass_mail
 from django.template import Context, loader
 
-from kolabria.settings import ADMINS, FROM_EMAIL
+from settings import ADMINS, FROM_EMAIL
 from django.contrib.sites.models import Site
 
 TO = [ email for name, email in ADMINS ]
