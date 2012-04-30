@@ -1,20 +1,29 @@
-{% extends 'main.html' %}
+{% extends 'base.html' %}
 {% load markup %}
 
 {% block title %} {{ tuser.username }} {% endblock %}
 
 {% block content %}
-	<div class="page-header">
-		<h1>Welcome!</h1>
-	</div>
-	
+    <div class="container-fluid">
+      <div class="row-fluid">
+        {% include "includes/modal-sidebar.html" %}
+        {% if messages %}
+        <div class="span6 offset3">
+          <div class="alert alert-block">
+            <a class="close" data-dismiss="alert">×</a>
+          {% for message in messages %}
+           <p>{{ message }}</p>
+          {% endfor %}
+          </div><!-- alert-block -->
+        </div><!--/span6 -->
+        {% endif %}
+
+  <div class="span8">
+    <h1>Hello user: {{ user.username }}.  Welcome to Kolabria!</h1>
+    <br/>
+  </div>	
+
 	<div class="span8">
-    	<center>
-		    <a href="{{ tuser.get_profile.get_image }}">
-		    	<img src="{{ tuser.get_profile.get_image }}" alt="">
-		    </a>
-	    </center>
-		
 		<table class="table table-bordered">
 			<tr>
 				<th>Username</th>
@@ -58,23 +67,6 @@
 					{{ profile.get_city_display }}
 				</td>
 			</tr>
-						{% if post_list %}
-				<tr>
-					<th>Posts</th>
-					<td>
-						<ul>
-							{% for post in post_list %}
-								<li>
-									<a href="{{ post.get_absolute_url }}">{{ post }}</a>
-									/
-									<a href="{{ post.category.get_absolute_url }}">{{ post.category }}</a>
-								</li>
-							{% endfor %}
-						</ul>
-						{% include '_pagination.html' %}
-					</td>
-				</tr>
-			{% endif %}
 		</table>	
 	</div>
 	
