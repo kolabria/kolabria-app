@@ -23,9 +23,12 @@
     <br/>
   </div>	
 
-	<div class="span8">
-		<table class="table table-bordered">
-			<tr>
+  <div class="span8">
+   	<table class="table table-bordered">
+      <a href="/accounts/settings/update_profile/" class="pull-right">Update User Profile</a>
+      <br />
+      <a href="/accounts/settings/update_user/" class="pull-right">Update User Details</a>
+      <tr>
 				<th>Username</th>
 				<td>{{ tuser.username }}</td>
 			</tr>
@@ -67,7 +70,8 @@
 					{{ profile.get_city_display }}
 				</td>
 			</tr>
-		</table>	
+   </table>	
+	
 	</div>
 	
 {% endblock %}

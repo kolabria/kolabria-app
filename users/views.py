@@ -126,10 +126,10 @@ def invite_friends(request):
 
 
 @login_required
-def update_informations(request):
+def update_user(request):
     """
-        Kişisel bilgileri güncelleme formu.
-        first_name, email, last_name
+    Update user details 
+    first_name, email, last_name
     """
 
     form = UserSettings(request.POST or None, instance = request.user)
@@ -139,17 +139,18 @@ def update_informations(request):
 
         messages.success(request, 'User details updated successfully')
 
-        return redirect('users:settings')
+        return redirect('/accounts/profile/%s/' % request.user.username)
 
 
-    return render(request, 'users/update_informations.html', locals())
+    return render(request, 'users/update_user.html', locals())
 
 
 @login_required
 def update_profile(request):
     """
-        Profil bilgilerini güncelleme formu.
-        web_site, about, city
+    User Profile linked one2one with user model. Also links user to company
+    account
+    Contains basic details such as web_site, about, city
     """
 
     form = ProfileForm(request.POST or None, instance = request.user.get_profile())

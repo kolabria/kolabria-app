@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %} Settings {% endblock %}
+{% block title %} Update Profile Details{% endblock %}
 
 {% block content %}
-    <div class="container-fluid">
-      <div class="row-fluid">
+	<div class="container-fluid">
+  <div class="row-fluid">
       {% include "includes/modal-sidebar.html" %}
       {% if messages %}
         <div class="span6 offset3">
@@ -17,7 +17,12 @@
         </div><!--/span6 -->
       {% endif %}
  
-	<div class="span8">
-		{% include 'users/_controls.html' %}
+	<div class="page-header offset2">
+		<h1>Profile Details</h1>
 	</div>
+	
+	<div class="span8">
+		{% include '_form.html' %}
+	</div>
+	
 {% endblock %}

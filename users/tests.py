@@ -98,7 +98,7 @@ class UserFunctionalTestsForAnonymousUser(TestCase):
         pass
     
     
-    def test_get_update_informations(self):
+    def test_get_update_user(self):
         pass
     
     
@@ -130,11 +130,11 @@ class UserFunctionalTestsForAuthenticatedUser(TestCase):
         pass
     
     
-    def test_get_update_informations(self):
+    def test_get_update_user(self):
         pass
     
     
-    def test_post_update_informations(self):
+    def test_post_update_user(self):
         pass
     
     

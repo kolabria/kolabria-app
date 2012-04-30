@@ -43,7 +43,7 @@ class Profile(models.Model):
     """
     admin = User.objects.filter(username='admin')[0]
     user = models.OneToOneField(User, default=admin, blank=True, null=True, verbose_name='Profile')
-    account = models.ForeignKey(Account, blank=True, null=True)
+    account = models.ForeignKey(Account, blank=True, null=True, editable=False)
     web_site = models.URLField('Website', max_length=255, blank=True, null=True)
     about = models.TextField('About', max_length=500, blank= True, null=True)
     city = models.CharField(verbose_name='City', blank=True, null=True,

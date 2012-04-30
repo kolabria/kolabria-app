@@ -33,7 +33,7 @@ urlpatterns = patterns('users.views',
 
        # profil ve hesap ayarları
        url(r'^settings/$', SettingsView.as_view(), name='settings'),                       
-       url(r'^settings/update_informations/$', 'update_informations', name='update_informations'),
+       url(r'^settings/update_user/$', 'update_user', name='update_user'),
        url(r'^settings/update_profile/$', 'update_profile', name='update_profile'),
 
        url(r'^invite_friends/$', 'invite_friends', name='invite_friends'),
