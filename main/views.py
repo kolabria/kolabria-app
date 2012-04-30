@@ -125,6 +125,7 @@ def create_account(request):
 
         # Create profile for account owner, link to Account
         profile = Profile.objects.create(user=request.user, account=account)
+        profile.admin = profile.account.owner
         profile.save()
 
         msg = 'Successfully created Account: %s with Owner: %s'
