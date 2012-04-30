@@ -30,7 +30,7 @@ class Account(models.Model):
         """
         Returns the Wall Name as unicode description for admin and shell
         """
-        return self.name
+        return self.company
 
 class AccountForm(ModelForm):
     class Meta:

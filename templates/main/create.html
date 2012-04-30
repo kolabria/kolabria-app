@@ -1,4 +1,4 @@
-{% extends "baseregister.html" %}
+{% extends "base.html" %}
 
 {% block title %}
     Kolabria - Create New Account</title>
@@ -8,7 +8,7 @@
 <div class="container-fluid">
    <div class="row-fluid"><!-- start header -->
     <div class="span4 logo">
-      <a href="index.html"><h1>Kolabria - Create an Account</h1></a>
+      <a href="index.html"><h1>Kolabria - Create Account</h1></a>
       <br/>
     </div>
   <div class="span8">
@@ -33,7 +33,7 @@
 </div><!-- end header -->
 
 <div class="row-fluid"><!-- start nav -->
-  <div class="span10">
+  <div class="span12">
     <ul class="breadcrumb">
       <li><a href="#">Home</a> <span class="divider">/</span></li>
       <li><a href="#">Account</a> <span class="divider">/</span></li>
@@ -55,144 +55,12 @@
       {% endif %}
   </div><!-- messages -->
 
-  <div class="span10">
-    <br />
-    <form action="/create/" method="post" class="form-horizontal">
-      <fieldset>
-        <div class="span5 ">
-          <legend class="span4 offset1">Account Details</legend>
-          <div class="control-group">
-            <label class="control-label">Company Name</label>
-            <div class="controls docs-input-sizes">
-              {{ form.company_name.errors }}
-              {{ form.company_name }}
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label">First Name</label>
-            <div class="controls docs-input-sizes">
-              {{ form.first_name.errors }}
-              {{ form.first_name }}
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label">Last Name</label>
-            <div class="controls docs-input-sizes">
-              {{ form.last_name.errors }}
-              {{ form.last_name }}
-            </div>
-          </div>            
-          <div class="control-group">
-            <label class="control-label">Email Address</label>
-            <div class="controls docs-input-sizes">
-              {{ form.email.errors }}
-              {{ form.email }}
-            </div>
-          </div>           
-          <div class="control-group">
-            <label class="control-label">Telephone</label>
-            <div class="controls docs-input-sizes">
-              {{ form.phone.errors }}
-              {{ form.phone }}
-            </div>
-          </div>
-        </div>
-
-        <div class="span6 ">
-          <legend class="span4 offset1">Billing Address </legend>
-          <div class="control-group">
-            <label class="control-label">Address 1</label>
-          <div class="controls docs-input-sizes">
-            {{ form.address1 }}
-            {{ form.address1.errors }}
-          </div>
-        </div>
-
-        <div class="control-group">
-          <label class="control-label">Address 2</label>
-          <div class="controls docs-input-sizes">
-            {{ form.address2 }}
-            {{ form.address2.errors }}
-          </div>
-        </div>
-
-        <div class="control-group">
-          <label class="control-label">City</label>
-          <div class="controls docs-input-sizes">
-            {{ form.city }}
-            {{ form.city.errors }}
-          </div>
-        </div>
-
-        <div class="control-group">
-          <label class="control-label">State</label>
-          <div class="controls docs-input-sizes">
-            {{ form.state }}
-            {{ form.state.errors }}
-          </div>
-        </div>
-
-        <div class="control-group">
-          <label class="control-label">ZIP</label>
-          <div class="controls docs-input-sizes">
-            {{ form.postal_zip }}
-            {{ form.postal_zip.errors }}
-          </div>
-        </div>
-
-        <div class="control-group">
-          <label class="control-label">Country</label>
-          <div class="controls docs-input-sizes">
-            {{ form.country }}
-            {{ form.country.errors }}
-          </div>
-        </div>
-      </div>
-{% comment %}
-      <div class="span12 no_margin_left">
-        <legend>Your login </legend>
-        <div class="span6 no_margin_left">
-          <div class="control-group">
-          <label class="control-label">Username</label>
-          <div class="controls docs-input-sizes">
-            {{ form.username }}
-            {{ form.username.errors }}
-          </div>
-        </div>
-      </div>
-
-      <div class="span6">
-        <div class="control-group">
-          <label class="control-label">Password</label>
-          <div class="controls docs-input-sizes">
-            {{ form.password1}}
-            {{ form.password1.errors }}
-          </div>
-        </div>            
-        <div class="control-group">
-          <label class="control-label">Confirm password</label>
-          <div class="controls docs-input-sizes">
-            {{ form.password2}}
-            {{ form.password2.errors }}
-          </div>
-        </div>
-      </div>
+  <h1>Create an account</h1>
+  <br />
+    <div class="span5 offset1 ">
+      {% include '_form.html' %}
     </div>
-
-    <div class=" span12 no_margin_left">
-    <hr>
-    <div class="span10 ">
-         {{ form.agree_terms.errors }}
-      <p>{{ form.agree_terms }} I have read and agree to the <a href="#">Privacy Policy</a></p> 
-         {{ form.newsletter.errors }}
-      <p>{{ form.newsletter }} Subscribe to our newsletter </p> 
-      <button class="btn btn-primary btn-large pull-right" type="submit">Register</button></div>
-    </div>
-{% endcomment %}
-    </fieldset>
-  </form>
-</div>
-
+  <hr />
 </div>
 {% endblock %}
 

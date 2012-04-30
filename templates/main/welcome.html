@@ -25,9 +25,11 @@
         <div class="span9 well">
           <h1>Welcome!</h1>
           <br>
-          <h3>Company: {{ company }}</h3>
-          <h3>Account Admin: {{ user.username }} 
-          <h3>Admin email: {{ user.email }}</h3>
+          <h3>Company: {{ profile.account.company }}</h3>
+          <h3>Subdomain: {{ subdomain }}
+          <h3>Profile: {{ profile }}
+          <h3>Username: {{ user.username }} 
+          <h3>Email: {{ user.email }}</h3>
 
           <br /> 
           <ul id="tab" class="nav nav-tabs">

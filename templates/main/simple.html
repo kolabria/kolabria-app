@@ -58,12 +58,7 @@
   <h1>Create an account</h1>
   <br />
   <div class="span5 offset1 ">
-    <form action="." method="Post" value="Submit" /> 
-      {{ form.as_p }}
-      <button a href="#" class="btn ">Cancel</button>
-      <input type="submit" value="Create Account" class="btn btn-primary">
-    </form>
-
+    {% include '_form.html' %}
     </div>
   <hr />
 </div>
