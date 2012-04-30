@@ -6,13 +6,15 @@
 				<i class="icon-lock"></i> 
 			  Change Password	
 			</a>
-		</li>
+      </li>
+    {% comment %}
 		<li>
 			<a href="{% url users:disable_account %}" id="confirm" title="Deleting an account cannot be reversed. Are you sure?">
 				<i class="icon-ban-circle"></i>
 				Delete My Account
 			</a>
-		</li>
+    </li>
+    {% endcomment %}
 		<li class="nav-header">My Profile</li>
 		<li>
 			<a href="{% url users:show_profile user.username %}">
