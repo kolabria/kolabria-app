@@ -13,13 +13,13 @@ class ProfileAdmin(admin.ModelAdmin):
     fieldsets = (
         (u'User Profile', 
             {
-             'fields': ('user', 'web_site', 'about')
+             'fields': ('user', 'city', 'about')
              }),
    )
     
     
-    search_fields = ['web_site', 'about', 'user__username']    
-    list_display  = ('user', 'web_site' )
+    search_fields = ['city', 'about', 'user__username']    
+    list_display  = ('user', 'city', )
 
 
 class CoolUserAdmin(UserAdmin):
