@@ -16,7 +16,6 @@ from users.forms import UserEmailCreationForm
 from users.models import Account, AccountForm, Profile, ProfileForm
 from django.contrib.auth.models import User
 
-import ipdb
 
 def signup(request):
     form = SignUpForm(request.POST or None)
@@ -36,7 +35,6 @@ def signup(request):
 def testsimple(request):
     form = TestForm(request.POST or None) 
     if form.is_valid():
-        ipdb.set_trace()
         username = form.cleaned_data['username']
         email = form.cleaned_data['email']
         password = form.cleaned_data['password1']

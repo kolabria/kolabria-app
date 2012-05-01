@@ -13,6 +13,6 @@ django-phonenumber-field
 django-email-usernames
 #django-registration
 
-ipdb
-ipython
+
+
 

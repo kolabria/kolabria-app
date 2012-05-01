@@ -7,7 +7,6 @@ from django.contrib import messages
 from django.contrib.formtools.wizard.views import SessionWizardView
 from django.views.generic.base import TemplateView
 
-import ipdb
 
 class HomePage(TemplateView):
     template_name = "public/home.html"
@@ -27,7 +26,6 @@ class CreateAccount(SessionWizardView):
         profile_data.instance.account = new_account
         profile = profile_data.save()
         
-        ipdb.set_trace()
         return HttpResponseRedirect('http://%s.kolabria.com:8000' %
                                                           new_account.slug)
 
